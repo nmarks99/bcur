@@ -33,6 +33,7 @@ SUPPORT=/APSshare/epics/synApps_6_2_1/support
 
 # Include any non-standard support
 URROBOT = $(TOP)/../epics-urRobot/
+LUA = $(SUPPORT)/lua-R3-0-2/
 
 # For a local, custom configuration; copy $(SUPPORT)/configure/RELEASE
 # to this directory as the file MASTER_RELEASE, edit the file, comment out
