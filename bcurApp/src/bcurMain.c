@@ -1,6 +1,3 @@
-/* bcurMain.c */
-/* Author:  Ron Sluiter */
-
 #include <stddef.h>
 #include <stdlib.h>
 #include <stddef.h>
@@ -21,3 +18,23 @@ int main(int argc,char *argv[])
 	epicsExit(0);
     return(0);
 }
+
+
+// here is how you use the lua shell instead of iocsh:
+//
+// #include "luaShell.h"
+/*
+int main(int argc,char *argv[])
+{
+    // enables a common environment between st.lua interactive shell
+    luashSetCommonState("default");
+
+    if(argc>=2) {    
+        luash(argv[1]);
+        epicsThreadSleep(.2);
+    }
+    luash(NULL);
+	epicsExit(0);
+   return(0);
+}
+*/
