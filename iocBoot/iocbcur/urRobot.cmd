@@ -1,9 +1,9 @@
 epicsEnvSet("ROBOT_NAME", "ur3e")
 
 # Set up UR RTDE interface
-epicsEnvSet("ASYN_PORT1", "ur_asyn1")
-dbLoadRecords("$(URROBOT)/db/rtde_receive.db", "P=$(PREFIX), R=$(ROBOT_NAME):, PORT=$(ASYN_PORT1), ADDR=0")
-URRobotRTDEConfig("$(ASYN_PORT1)", "164.54.104.148")
+# epicsEnvSet("ASYN_PORT1", "ur_asyn1")
+# dbLoadRecords("$(URROBOT)/db/rtde_receive.db", "P=$(PREFIX), R=$(ROBOT_NAME):, PORT=$(ASYN_PORT1), ADDR=0")
+# URRobotRTDEConfig("$(ASYN_PORT1)", "164.54.104.148")
 
 # Set up UR dashboard server
 epicsEnvSet("ASYN_PORT2", "ur_asyn2")

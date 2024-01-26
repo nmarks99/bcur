@@ -16,14 +16,16 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 
 < urRobot.cmd
 
+dbLoadRecords("./scripts/bcur_lua.db", "PORT=ur_asyn2")
+
 # load the sample database and other records needed
 # dbLoadTemplate("gixs_sample.substitutions", "P=$(PREFIX), R=")
 # dbLoadRecords("gixs_params.db","P=$(PREFIX),R=")
 
 #- devIocStats
-dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")
+# dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")
 #- PV aliases change :: into :
-dbLoadRecords("$(TOP)/bcurApp/Db/iocAdminSoft_aliases.db","P=$(PREFIX)")
+# dbLoadRecords("$(TOP)/bcurApp/Db/iocAdminSoft_aliases.db","P=$(PREFIX)")
 
 ###############################################################################
 iocInit
