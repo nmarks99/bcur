@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
 from epics import caput
+import sys
 import time
 
-MAX_BLOCK = 10
+MAX_BLOCK = int(sys.argv[1])
 
 pvs = [
     "bcur:Sample$(BlockID):InReservoir",
