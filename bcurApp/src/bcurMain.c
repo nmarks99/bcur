@@ -8,22 +8,20 @@
 #include <iocsh.h>
 #include <epicsExit.h>
 
-int main(int argc,char *argv[])
-{
-    if(argc>=2) {    
-        iocsh(argv[1]);
-        epicsThreadSleep(.2);
-    }
-    iocsh(NULL);
-	epicsExit(0);
-    return(0);
-}
+// int main(int argc,char *argv[])
+// {
+    // if(argc>=2) {
+        // iocsh(argv[1]);
+        // epicsThreadSleep(.2);
+    // }
+    // iocsh(NULL);
+	// epicsExit(0);
+    // return(0);
+// }
 
 
-// here is how you use the lua shell instead of iocsh:
-//
-// #include "luaShell.h"
-/*
+// use lua shell instead of iocsh
+#include "luaShell.h"
 int main(int argc,char *argv[])
 {
     // enables a common environment between st.lua interactive shell
@@ -37,4 +35,3 @@ int main(int argc,char *argv[])
 	epicsExit(0);
    return(0);
 }
-*/

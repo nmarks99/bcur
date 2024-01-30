@@ -21,8 +21,9 @@ IOC_BINARY=bcur
 #!IOC_BIN_DIR=/home/username/epics/synApps/support/module/iocs/exampleIOC/bin
 
 # uncomment for your OS here (comment out all the others)
+IOC_STARTUP_FILE="st.lua"
+#IOC_STARTUP_FILE="st.cmd.Linux"
 #IOC_STARTUP_FILE="st.cmd.Cygwin"
-IOC_STARTUP_FILE="st.cmd.Linux"
 #IOC_STARTUP_FILE="st.cmd.vxWorks"
 #IOC_STARTUP_FILE="st.cmd.Win32"
 #IOC_STARTUP_FILE="st.cmd.Win64"
