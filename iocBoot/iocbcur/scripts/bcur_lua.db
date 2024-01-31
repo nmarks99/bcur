@@ -1,4 +1,0 @@
-record(luascript, "lua_testing")
-{
-    field(CODE, "@bcur.lua testing()")
-}

@@ -18,3 +18,14 @@ record(bo, "$(P)$(R)SampleLid")
     field(ZNAM, "Lid off")
     field(ONAM, "Lid on")
 }
+
+record(luascript, "$(P)$(R)LoadSample")
+{
+    field(DESC, "Calls load_sample() lua function")
+    field(CODE, "@gixs.lua load_sample()")
+}
+
+record(luascript, "$(P)$(R)asdf")
+{
+    field(CODE, "@gixs.lua asdf()")
+}

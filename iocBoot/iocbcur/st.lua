@@ -13,11 +13,10 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 < common.lua
 
 < urRobot.lua
-dbLoadRecords("./scripts/bcur_lua.db", "PORT=ur_asyn2")
 
 -- load the sample database and other records needed
 dbLoadTemplate("gixs_sample.substitutions", "P=$(PREFIX), R=")
-dbLoadRecords("gixs_params.db","P=$(PREFIX),R=")
+dbLoadRecords("gixs.db","P=$(PREFIX),R=")
 
 -------------------------------------------------------------------------------
 iocInit()
