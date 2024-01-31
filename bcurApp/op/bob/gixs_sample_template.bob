@@ -6,7 +6,7 @@
   <height>40</height>
   <widget type="symbol" version="2.0.0">
     <name>Symbol</name>
-    <pv_name>eq://!(bcur:Sample$(BlockID):Measured)</pv_name>
+    <pv_name>eq://!($(P)$(R)Sample$(BlockID):Measured)</pv_name>
     <symbols>
       <symbol>./icons/checkmark.svg</symbol>
     </symbols>
@@ -28,7 +28,7 @@
   </widget>
   <widget type="symbol" version="2.0.0">
     <name>Symbol_3</name>
-    <pv_name>eq://!(bcur:Sample$(BlockID):InGripper)</pv_name>
+    <pv_name>eq://!($(P)$(R)Sample$(BlockID):InGripper)</pv_name>
     <symbols>
       <symbol>./icons/robot-arm.svg</symbol>
     </symbols>
@@ -39,7 +39,7 @@
   </widget>
   <widget type="symbol" version="2.0.0">
     <name>Symbol_4</name>
-    <pv_name>bcur:Sample$(BlockID):Exists</pv_name>
+    <pv_name>$(P)$(R)Sample$(BlockID):Exists</pv_name>
     <symbols>
       <symbol>./icons/x.svg</symbol>
     </symbols>
@@ -50,7 +50,7 @@
   </widget>
   <widget type="symbol" version="2.0.0">
     <name>Symbol_5</name>
-    <pv_name>eq://!(bcur:Sample$(BlockID):InSampleStage)</pv_name>
+    <pv_name>eq://!($(P)$(R)Sample$(BlockID):InSampleStage)</pv_name>
     <symbols>
       <symbol>./icons/yellow-square.svg</symbol>
     </symbols>
@@ -61,7 +61,7 @@
   </widget>
   <widget type="symbol" version="2.0.0">
     <name>Symbol_6</name>
-    <pv_name>eq://!(bcur:Sample$(BlockID):InReservoir)</pv_name>
+    <pv_name>eq://!($(P)$(R)Sample$(BlockID):InReservoir)</pv_name>
     <symbols>
       <symbol>icons/blue-diamong.svg</symbol>
     </symbols>
