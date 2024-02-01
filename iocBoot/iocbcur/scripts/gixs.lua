@@ -15,6 +15,8 @@ local DASHBOARD_PORT = "ur_dash_asyn"
 local ADDR = 0
 local MOVING_DOUT_BIT = 0 -- digital output bit robot moving flag
 
+-- "works" but probably should use busy record
+-- Warning: "Virtual circuit disconnect"
 function load_sample()
     asyn.writeParam(DASHBOARD_PORT, ADDR, "LOAD_URP", "myprogram")
     asyn.writeParam(DASHBOARD_PORT, ADDR, "PLAY", 1)
@@ -44,5 +46,5 @@ function load_sample()
 end
 
 function asdf()
-    print("hello world")
+    os.execute("sleep 3")
 end

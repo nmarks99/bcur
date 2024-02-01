@@ -1,0 +1,19 @@
+record(bi, "$(P)$(R)RobotMoving")
+{
+    field(VAL, 0)
+    field(FLNK, "$(P)$(R)continue_when_done.PROC")
+}
+
+record(calcout, "$(P)$(R)continue_when_done")
+{
+    field(INPA, "$(P)$(R)RobotMoving NPP")
+    field(CALC, "A")
+    field(OOPT, "Transition To Zero")
+    field(OUT, "$(P)print_done PP")
+}
+
+record(luascript, "$(P)$(R)print_done")
+{
+    field(CODE, "print('done')")
+}
+
