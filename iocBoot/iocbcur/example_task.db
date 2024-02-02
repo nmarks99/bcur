@@ -1,60 +1,36 @@
-# Example task
-# In this example the user calls RunTask
-# which runs a series of processes on the robot,
-# but only runs the next process after the previous
-# one has finished. Here we assume that each process
-# causes the robot to move, so the next process waits
-# until the robot has stopped moving before continuing.
-
-
-# Imagine this record actually causes the robot to move,
-# which will result in the moving bit being set.
-# For this example, we just set the bit directly
-# Here we assume the 0'th bit is the moving flag
 record(bo, "$(P)$(R)RunTask")
 {
-    field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT))SET_STANDARD_DIGITAL_OUT0")
+    field(FLNK, "$(P)$(R)TaskRunner.PROC")
 }
 
-# When loaded, this record overwrites the one that is loaded
-# from the urRobot support module. The only difference being
-# that now we create the FLNK to the RobotMoving record
+record(luascript, "$(P)$(R)TaskRunner")
+{
+    field(CODE, "@example_task.lua main()")
+}
+
 record(ai, "$(P)$(R)RTDE:DigitalOutputBits")
 {
     field(DESC, "Digital output bits (18bits)")
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT))DIGITAL_OUTPUT_BITS")
-    field(FLNK, "$(P)$(R)RobotMoving.PROC")
+    field(FLNK, "$(P)$(R)TaskWaiting.PROC")
     field(SCAN, "I/O Intr")
 }
 
-# Gets called whenever DigitalOutputBits processes and
-# extracts the bit corresponding to whether or not the
-# robot is moving and sends it to the ContinueIfDone record
-# this extracts the n'th bit from A:
-# ((A & (1 << n)) != 0) ? 1 : 0
-record(calcout, "$(P)$(R)RobotMoving")
+# this extracts the n'th bit from A
+# ((A & (1 << n)) != 0) ? 1 : 0 
+# and passes the value on to ContinueIfDone
+record(calcout, "$(P)$(R)TaskWaiting")
 {
     field(INPA, "$(P)$(R)RTDE:DigitalOutputBits.VAL")
     field(CALC, "((A & (1 << 0)) != 0) ? 1 : 0")
     field(FLNK, "$(P)$(R)ContinueIfDone.PROC")
 }
 
-# When the RobotMoving value changes from 1 to 0,
-# process the forward link, otherwise does nothing
 record(calcout, "$(P)$(R)ContinueIfDone")
 {
-    field(INPA, "$(P)$(R)RobotMoving NPP")
+    field(INPA, "$(P)$(R)TaskWaiting NPP")
     field(CALC, "A")
     field(OOPT, "Transition To Zero")
-    field(OUT, "$(P)all_done PP")
-}
-
-# This could be for example an additional task that must run
-# after the first one has completed and the robot has stopped,
-# but in this example we simple just print "done" to the console.
-record(luascript, "$(P)$(R)all_done")
-{
-    field(CODE, "print('Task done')")
+    field(OUT, "$(P)TaskRunner PP")
 }
