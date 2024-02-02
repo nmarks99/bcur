@@ -2,7 +2,7 @@
 #
 # Each sample (block) is given an ID and string comment for metadata
 
-file "gixs_sample.db" {
+file "gixs/gixs_sample.db" {
     pattern
     {BlockID, EXISTS,  COMMENT}
     {1, 1, "This is sample ID: $(BlockID)"}
