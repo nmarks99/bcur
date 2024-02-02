@@ -1,0 +1,5 @@
+record(luascript, "$(P)$(R)LoadSample")
+{
+    field(SYNC, "Async")
+    field(CODE, "@gixs.lua load_sample()")
+}
