@@ -1,0 +1,49 @@
+# Example task:
+# Imagine this record actually causes the robot to move,
+# which will result in the moving bit being set.
+# For this example, we just set the bit directly
+record(bo, "$(P)$(R)RunTask")
+{
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT))SET_STANDARD_DIGITAL_OUT0")
+}
+
+# When loaded, this record overwrites the one that is loaded
+# from the urRobot support module. The only difference being
+# that now we create the FLNK to the RobotMoving record
+record(ai, "$(P)$(R)RTDE:DigitalOutputBits")
+{
+    field(DESC, "Digital output bits (18bits)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT))DIGITAL_OUTPUT_BITS")
+    field(FLNK, "$(P)$(R)RobotMoving.PROC")
+    field(SCAN, "I/O Intr")
+}
+
+# Gets called whenever DigitalOutputBits processes and
+# extracts the bit corresponding to whether or not the
+# robot is moving and sends it to the ContinueIfDone record
+record(luascript, "$(P)$(R)RobotMoving")
+{
+    field(INPA, "$(P)$(R)RTDE:DigitalOutputBits.VAL")
+    field(CODE, "@gixs.lua robot_moving()")
+    field(FLNK, "$(P)$(R)ContinueIfDone.PROC")
+}
+
+# When the RobotMoving value changes from 1 to 0,
+# process the forward link, otherwise does nothing
+record(calcout, "$(P)$(R)ContinueIfDone")
+{
+    field(INPA, "$(P)$(R)RobotMoving NPP")
+    field(CALC, "A")
+    field(OOPT, "Transition To Zero")
+    field(OUT, "$(P)all_done PP")
+}
+
+# This could be for example an additional task that must run
+# after the first one has completed and the robot has stopped,
+# but in this example we simple just print "done" to the console.
+record(luascript, "$(P)$(R)all_done")
+{
+    field(CODE, "print('Task done')")
+}

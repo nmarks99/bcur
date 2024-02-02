@@ -16,7 +16,8 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 
 -- load the sample database and other records needed
 dbLoadTemplate("gixs_sample.substitutions", "P=$(PREFIX), R=")
-dbLoadRecords("gixs.db","P=$(PREFIX),R=")
+-- dbLoadRecords("gixs.db","P=$(PREFIX),R=")
+dbLoadRecords("example_task.db","P=$(PREFIX),R=,PORT=$(UR_RTDE_PORT)")
 
 -------------------------------------------------------------------------------
 iocInit()
