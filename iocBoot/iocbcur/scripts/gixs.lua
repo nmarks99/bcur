@@ -43,8 +43,3 @@ function load_sample()
 
     print("Done!")
 end
-
-function asdf()
-    os.execute("sleep 3")
-end
-

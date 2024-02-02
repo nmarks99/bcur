@@ -22,11 +22,7 @@ record(bo, "$(P)$(R)SampleLid")
 record(luascript, "$(P)$(R)LoadSample")
 {
     field(DESC, "Calls load_sample() lua function")
+    field(SYNC, "Async")
     field(CODE, "@gixs.lua load_sample()")
-}
-
-record(luascript, "$(P)$(R)asdf")
-{
-    field(CODE, "@gixs.lua asdf()")
 }
 
