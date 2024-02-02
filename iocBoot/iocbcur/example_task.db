@@ -1,7 +1,16 @@
-# Example task:
+# Example task
+# In this example the user calls RunTask
+# which runs a series of processes on the robot,
+# but only runs the next process after the previous
+# one has finished. Here we assume that each process
+# causes the robot to move, so the next process waits
+# until the robot has stopped moving before continuing.
+
+
 # Imagine this record actually causes the robot to move,
 # which will result in the moving bit being set.
 # For this example, we just set the bit directly
+# Here we assume the 0'th bit is the moving flag
 record(bo, "$(P)$(R)RunTask")
 {
     field(DTYP, "asynInt32")
@@ -23,10 +32,12 @@ record(ai, "$(P)$(R)RTDE:DigitalOutputBits")
 # Gets called whenever DigitalOutputBits processes and
 # extracts the bit corresponding to whether or not the
 # robot is moving and sends it to the ContinueIfDone record
-record(luascript, "$(P)$(R)RobotMoving")
+# this extracts the n'th bit from A:
+# ((A & (1 << n)) != 0) ? 1 : 0
+record(calcout, "$(P)$(R)RobotMoving")
 {
     field(INPA, "$(P)$(R)RTDE:DigitalOutputBits.VAL")
-    field(CODE, "@gixs.lua robot_moving()")
+    field(CALC, "((A & (1 << 0)) != 0) ? 1 : 0")
     field(FLNK, "$(P)$(R)ContinueIfDone.PROC")
 }
 
