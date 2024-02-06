@@ -1,0 +1,13 @@
+record(luascript, "$(P)$(R)RunTaskTest")
+{
+    field(DESC, "Calls lua function")
+    field(SYNC, "Async")
+    field(CODE, "@bcur.lua basic_task()")
+}
+
+record(bo, "$(P)$(R)Busy")
+{
+    field(DESC, "1 if robot is busy, else 0")
+    field(VAL, 0)
+}
+
