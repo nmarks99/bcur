@@ -1,8 +1,8 @@
-record(luascript, "$(P)$(R)RunTaskTest")
+record(luascript, "$(P)$(R)RunBlink")
 {
     field(DESC, "Calls lua function")
     field(SYNC, "Async")
-    field(CODE, "@bcur.lua basic_task()")
+    field(CODE, "@bcur.lua blink_task()")
 }
 
 record(bo, "$(P)$(R)Busy")
