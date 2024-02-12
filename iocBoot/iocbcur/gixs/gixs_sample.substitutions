@@ -1,6 +1,8 @@
 # Substitutions file to load GIXS samples
 #
-# Each sample (block) is given an ID and string comment for metadata
+# Each sample (block) is given an ID number, a 1 or 0 corresponding
+# to whether or not the sample is present in the experiment, and a
+# string comment for metadata
 
 file "gixs/gixs_sample.db" {
     pattern

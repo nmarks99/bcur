@@ -14,10 +14,9 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 
 < urRobot.lua
 
--- load the sample database and other records needed
--- dbLoadTemplate("gixs/gixs_sample.substitutions", "P=$(PREFIX), R=")
--- dbLoadRecords("gixs/gixs.db","P=$(PREFIX),R=")
-dbLoadRecords("bcur.db","P=$(PREFIX),R=")
+dbLoadTemplate("gixs/gixs_sample.substitutions", "P=$(PREFIX), R=")
+dbLoadRecords("gixs/gixs.db","P=$(PREFIX),R=")
+-- dbLoadRecords("bcur.db","P=$(PREFIX),R=")
 
 -------------------------------------------------------------------------------
 iocInit()

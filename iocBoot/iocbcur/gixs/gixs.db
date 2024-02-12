@@ -1,5 +1,4 @@
-record(longout, "$(P)$(R)CurrentBlockID") {
-    field(DESC, "Current BlockID to give to the robot")
+record(longout, "$(P)$(R)BlockID") {
     field(VAL, 0)
 }
 
@@ -19,10 +18,15 @@ record(bo, "$(P)$(R)SampleLid")
     field(ONAM, "Lid on")
 }
 
+record(bo, "$(P)$(R)Busy")
+{
+    field(DESC, "1 if robot is busy, else 0")
+    field(VAL, 0)
+}
+
 record(luascript, "$(P)$(R)LoadSample")
 {
     field(DESC, "Calls load_sample() lua function")
     field(SYNC, "Async")
-    field(CODE, "@gixs.lua load_sample()")
+    field(CODE, "@gixs.lua load_sample({P='$(P)',program='blink.urp'})")
 }
-
