@@ -84,7 +84,7 @@ local function wait_asyn_param(asyn_port, asyn_param, match, timeout)
     end
 end
 
--- throws error if safety status not in normal mode or if runtime state not stopped
+-- returns true is robot stopped and in normal mode, otherwise false
 local function ready()
     local safety_status_bits = asyn.readParam(RTDE_PORT, ADDR, "SAFETY_STATUS_BITS")
     local normal_bit = get_bit(safety_status_bits, SafetyStatus.IS_NORMAL_MODE)
