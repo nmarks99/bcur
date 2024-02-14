@@ -5,18 +5,18 @@ epicsEnvSet("IOCSH_PS1", "$(IOC)> ")
 epicsEnvSet("PREFIX", "bcur:")
 
 #For devIocStats
-epicsEnvSet("ENGINEER", "Nick")
+epicsEnvSet("ENGINEER", "engineer")
 epicsEnvSet("LOCATION", "location")
-epicsEnvSet("GROUP", "BCDA")
+epicsEnvSet("GROUP", "group")
 
 # search path for database files
-# epicsEnvSet("EPICS_DB_INCLUDE_PATH", "$(DEVIOCSTATS)/db")
+epicsEnvSet("EPICS_DB_INCLUDE_PATH", ".")
 
 # search path for streamDevice protocol files
 epicsEnvSet("STREAM_PROTOCOL_PATH", ".")
 
 # search path for lua scripts
-epicsEnvSet("LUA_SCRIPT_PATH", "./scripts")
+# epicsEnvSet("LUA_SCRIPT_PATH", "./scripts")
 
 # Specify largest array CA will transport
 # Note for N doubles, need N*8 bytes+some overhead

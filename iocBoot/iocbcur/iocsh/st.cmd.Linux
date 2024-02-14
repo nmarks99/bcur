@@ -14,13 +14,7 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 < settings.iocsh
 # < common.iocsh
 
-< urRobot.cmd
-
-dbLoadRecords("./scripts/bcur_lua.db", "PORT=ur_asyn2")
-
-# load the sample database and other records needed
-dbLoadTemplate("gixs_sample.substitutions", "P=$(PREFIX), R=")
-dbLoadRecords("gixs_params.db","P=$(PREFIX),R=")
+< urRobot.iocsh
 
 #- devIocStats
 # dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")

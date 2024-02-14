@@ -39,14 +39,18 @@ DBD_SUFFIX_WIN32 = Win$(if $(findstring 32, $(T_A)),32,64)
 DBD_NAME = $(DBD_PREFIX)$(DBD_SUFFIX_$(OS_CLASS))
 
 DBD  += $(DBD_NAME).dbd
+$(DBD_NAME)_DBD += base.dbd
 
-ifndef ADCORE
-  $(DBD_NAME)_DBD += base.dbd
-endif
-
+ifneq ($(OS_CLASS), vxWorks)
 ifdef ADCORE
   # areaDetector provides a Makefile for things it needs and supplies
   -include $(ADCORE)/ADApp/commonDriverMakefile
+endif
+
+ifdef ADSIMDETECTOR
+  $(DBD_NAME)_DBD += simDetectorSupport.dbd
+  $(PROD_NAME)_LIBS := simDetector $($(PROD_NAME)_LIBS)
+endif
 endif
 
 #ifdef TDS3000
@@ -78,9 +82,7 @@ ifdef SNCSEQ
 endif
 
 ifdef ASYN
-  ifndef ADCORE
-    $(DBD_NAME)_DBD += asyn.dbd
-  endif
+  $(DBD_NAME)_DBD += asyn.dbd
   $(DBD_NAME)_DBD += drvAsynSerialPort.dbd drvAsynIPPort.dbd drvVxi11.dbd devGpib.dbd
   $(PROD_NAME)_LIBS := asyn $($(PROD_NAME)_LIBS)
 endif
@@ -96,23 +98,17 @@ ifdef SCALER
 endif
 
 ifdef CALC
-  ifndef ADCORE
-    $(DBD_NAME)_DBD += calcSupport.dbd
-  endif
+  $(DBD_NAME)_DBD += calcSupport.dbd
   $(PROD_NAME)_LIBS := calc $($(PROD_NAME)_LIBS)
 endif
 
 ifdef BUSY
-  ifndef ADCORE
-    $(DBD_NAME)_DBD += busySupport.dbd
-  endif
+  $(DBD_NAME)_DBD += busySupport.dbd
   $(PROD_NAME)_LIBS := busy $($(PROD_NAME)_LIBS)
 endif
 
 ifdef SSCAN
-  ifndef ADCORE
-    $(DBD_NAME)_DBD += sscanSupport.dbd
-  endif
+  $(DBD_NAME)_DBD += sscanSupport.dbd
   $(PROD_NAME)_LIBS := sscan $($(PROD_NAME)_LIBS)
   ifdef SNCSEQ
     $(DBD_NAME)_DBD += sscanProgressSupport.dbd
@@ -121,9 +117,7 @@ ifdef SSCAN
 endif
 
 ifdef AUTOSAVE
-  ifndef ADCORE
-    $(DBD_NAME)_DBD += asSupport.dbd
-  endif
+  $(DBD_NAME)_DBD += asSupport.dbd
   $(PROD_NAME)_LIBS := autosave $($(PROD_NAME)_LIBS)
 endif
 
@@ -137,9 +131,11 @@ ifdef MCA
   $(PROD_NAME)_LIBS := mca $($(PROD_NAME)_LIBS)
 endif
 
+ifneq ($(OS_CLASS), vxWorks)
 ifdef QUADEM
   $(DBD_NAME)_DBD += drvAHxxx.dbd drvTetrAMM.dbd
   $(PROD_NAME)_LIBS := quadEM $($(PROD_NAME)_LIBS)
+endif
 endif
 
 ifdef IP
@@ -180,6 +176,11 @@ ifdef MOTOR
   $(PROD_NAME)_LIBS := Parker SmartMotor ThorLabs softMotor motorSimSupport $($(PROD_NAME)_LIBS)
 endif
 
+ifdef OPCUA
+  $(DBD_NAME)_DBD += opcua.dbd
+  $(PROD_NAME)_LIBS := opcua
+endif
+
 ifdef STREAM
   $(DBD_NAME)_DBD += stream.dbd
   $(PROD_NAME)_LIBS := stream $($(PROD_NAME)_LIBS)
@@ -190,15 +191,8 @@ ifdef DEVIOCSTATS
   $(PROD_NAME)_LIBS := devIocStats $($(PROD_NAME)_LIBS)
 endif
 
-ifdef ETHERIP
-  $(DBD_NAME)_DBD += ether_ip.dbd
-  $(PROD_NAME)_LIBS := ether_ip $($(PROD_NAME)_LIBS)
-endif
-
 ifdef ALIVE
-  ifndef ADCORE
-    $(DBD_NAME)_DBD += aliveSupport.dbd
-  endif
+  $(DBD_NAME)_DBD += aliveSupport.dbd
   $(PROD_NAME)_LIBS := alive $($(PROD_NAME)_LIBS)
 endif
 
@@ -252,7 +246,20 @@ ifeq ($(OS_CLASS), WIN32)
       $(PROD_NAME)_SYS_LIBS += setupapi
     endif
   endif
-  
+
+  ifeq (windows-x64, $(findstring windows-x64, $(T_A)))
+    ifdef DANTE
+      $(DBD_NAME)_DBD += mcaDanteSupport.dbd
+      $(PROD_NAME)_LIBS := mcaDante $($(PROD_NAME)_LIBS)
+      $(PROD_NAME)_LIBS := XGL_DPP $($(PROD_NAME)_LIBS)
+    endif
+
+    ifdef LABJACK
+      $(DBD_NAME)_DBD += LabJackSupport.dbd
+      $(PROD_NAME)_LIBS := LabJack LabJackM $($(PROD_NAME)_LIBS)
+    endif
+  endif
+    
   ifdef DXPSITORO
     $(DBD_NAME)_DBD += dxpSITOROSupport.dbd
     $(PROD_NAME)_LIBS := dxpSITORO handelSITORO $($(PROD_NAME)_LIBS)
@@ -347,6 +354,136 @@ endif
 
 ##################################################################
 ifeq ($(OS_CLASS), Linux) 
+  
+ifdef ADURL
+  $(DBD_NAME)_DBD += URLDriverSupport.dbd
+  $(PROD_NAME)_LIBS := URLDriver $($(PROD_NAME)_LIBS)
+endif
+
+ifdef ADGENICAM
+  $(PROD_NAME)_LIBS := ADGenICam $($(PROD_NAME)_LIBS)
+endif
+
+ifdef ADANDOR
+  $(DBD_NAME)_DBD += andorCCDSupport.dbd
+  $(DBD_NAME)_DBD += shamrockSupport.dbd
+  $(PROD_NAME)_LIBS := andorCCD $($(PROD_NAME)_LIBS)
+
+  PROD_SYS_LIBS_Linux += andor
+  PROD_SYS_LIBS_Linux += shamrockcif
+
+endif
+
+ifdef ADARAVIS
+  $(DBD_NAME)_DBD += ADAravisSupport.dbd
+
+  PROD_LIBS += ADAravis
+  PROD_SYS_LIBS_Linux += ADAravis
+  PROD_SYS_LIBS_Linux += ADGenICam
+  PROD_SYS_LIBS_Linux += aravis-0.8
+  PROD_SYS_LIBS += gio-2.0 gobject-2.0 gthread-2.0 glib-2.0
+  PROD_SYS_LIBS_Linux += usb-1.0
+endif
+
+ifdef ADVIMBA
+  $(DBD_NAME)_DBD += ADVimbaSupport.dbd
+
+  PROD_LIBS += ADVimba
+  PROD_SYS_LIBS_Linux += ADVimba
+  PROD_SYS_LIBS_Linux += VimbaC
+  PROD_SYS_LIBS_Linux += VimbaCPP
+  PROD_SYS_LIBS_Linux += VimbaImageTransform
+endif
+
+ifdef ADSPINNAKER
+
+  PROD_LIBS += ADSpinnaker
+  $(DBD_NAME)_DBD += ADSpinnakerSupport.dbd
+ 
+# We use PROD_SYS_LIBS even though varios so files are in the ADSpinnaker tree 
+# because we are doing static build but the file is a .so file, not a .a file.
+
+PROD_SYS_LIBS_Linux += Spinnaker
+PROD_SYS_LIBS_Linux += GCBase_gcc540_v3_0
+PROD_SYS_LIBS_Linux += GenApi_gcc540_v3_0
+PROD_SYS_LIBS_Linux += NodeMapData_gcc540_v3_0
+PROD_SYS_LIBS_Linux += MathParser_gcc540_v3_0
+PROD_SYS_LIBS_Linux += XmlParser_gcc540_v3_0
+PROD_SYS_LIBS_Linux += Log_gcc540_v3_0
+
+endif
+
+ifdef ADPOINTGREY
+  $(DBD_NAME)_DBD += pointGreySupport.dbd
+  $(PROD_NAME)_LIBS := pointGrey $($(PROD_NAME)_LIBS)
+#  $(PROD_NAME)_LIBS := flycapture $($(PROD_NAME)_LIBS)
+
+PROD_SYS_LIBS_Linux += flycapture
+endif
+
+ifdef ADPROSILICA
+  $(DBD_NAME)_DBD += prosilicaSupport.dbd
+  $(PROD_NAME)_LIBS := prosilica $($(PROD_NAME)_LIBS)
+  $(PROD_NAME)_LIBS := PvAPI $($(PROD_NAME)_LIBS)
+
+
+PROD_SYS_LIBS_Linux += prosilica 
+PROD_SYS_LIBS_Linux += PvAPI
+PROD_SYS_LIBS_Linux += readline
+
+endif
+
+ifdef ADPIXIRAD
+  $(DBD_NAME)_DBD += pixiradSupport.dbd
+  $(PROD_NAME)_LIBS := pixirad $($(PROD_NAME)_LIBS)
+endif
+
+ifdef ADMAR345
+  $(DBD_NAME)_DBD += mar345Support.dbd
+  $(PROD_NAME)_LIBS := mar345 $($(PROD_NAME)_LIBS)
+endif
+
+ifdef ADPILATUS
+  $(DBD_NAME)_DBD +=  pilatusDetectorSupport.dbd
+  $(PROD_NAME)_LIBS := pilatusDetector $($(PROD_NAME)_LIBS)
+#  $(PROD_NAME)_LIBS := cbfad $($(PROD_NAME)_LIBS)
+
+
+PROD_SYS_LIBS += cbfad
+endif
+
+ifdef ADEIGER
+  $(DBD_NAME)_DBD +=  eigerDetectorSupport.dbd
+  $(PROD_NAME)_LIBS := eigerDetector $($(PROD_NAME)_LIBS)
+  $(PROD_NAME)_LIBS := frozen $($(PROD_NAME)_LIBS)
+  $(PROD_NAME)_LIBS := hdf5_hl $($(PROD_NAME)_LIBS)
+
+ # PROD_SYS_LIBS  += eigerDetector
+  PROD_SYS_LIBS  += frozen 
+  PROD_SYS_LIBS  += hdf5_hl hdf5
+  PROD_SYS_LIBS  += zmq 
+
+
+ifdef ZMQ_LIB
+  zmq_DIR        += $(ZMQ_LIB)
+  PROD_LIBS      += zmq
+else
+  PROD_SYS_LIBS  += zmq
+endif
+endif
+
+
+ifdef PVADRIVER
+  $(DBD_NAME)_DBD += pvaDriverSupport.dbd
+  $(PROD_NAME)_LIBS := pvaDriver $($(PROD_NAME)_LIBS)
+endif
+    
+  ifdef DANTE
+    $(DBD_NAME)_DBD += mcaDanteSupport.dbd
+    $(PROD_NAME)_LIBS := mcaDante $($(PROD_NAME)_LIBS)
+    $(PROD_NAME)_SYS_LIBS += XGL_DPP
+  endif
+    
   ifdef DXP
     # If your host supports parallel port or USB interfaces to Saturn DXP, set
     # LINUX_USB_INSTALLED to YES in <synApps>/configure/CONFIG_SITE.
@@ -355,6 +492,11 @@ ifeq ($(OS_CLASS), Linux)
       $(PROD_NAME)_LIBS  := dxp handel $($(PROD_NAME)_LIBS)
       $(PROD_NAME)_SYS_LIBS += usb 
     endif
+  endif
+
+  ifdef ETHERIP
+    $(DBD_NAME)_DBD += ether_ip.dbd
+    $(PROD_NAME)_LIBS := ether_ip $($(PROD_NAME)_LIBS)
   endif
 
   ifdef MCA
@@ -399,26 +541,54 @@ ifeq ($(OS_CLASS), Linux)
     $(DBD_NAME)_DBD += softGlueSupport.dbd
     $(PROD_NAME)_LIBS := softGlue $($(PROD_NAME)_LIBS)
   endif
-  
+
+ifeq (linux-arm, $(findstring linux-arm, $(T_A)))
   ifdef SOFTGLUEZYNQ
     $(DBD_NAME)_DBD += softGlueZynqSupport.dbd
     $(PROD_NAME)_LIBS := softGlueZynq $($(PROD_NAME)_LIBS)
   endif
+endif
     
   ifdef YOKOGAWA_DAS
     $(DBD_NAME)_DBD += mw100Support.dbd
     $(PROD_NAME)_LIBS := mw100 $($(PROD_NAME)_LIBS)
   endif
+  
+  ifdef GALIL
+    $(DBD_NAME)_DBD += GalilSupport.dbd
+    $(PROD_NAME)_LIBS := GalilSupport $($(PROD_NAME)_LIBS)
+  endif
+    
+  ifdef XSPRESS3
+    $(DBD_NAME)_DBD += xspress3Support.dbd
+    $(PROD_NAME)_LIBS := xspress3Epics xspress3 img_mod $($(PROD_NAME)_LIBS)
+    $(PROD_NAME)_SYS_LIBS += pthread rt
+    
+  endif
+    
+  ifdef LABJACK
+    $(DBD_NAME)_DBD += LabJackSupport.dbd
+    $(PROD_NAME)_LIBS := LabJack LabJackM $($(PROD_NAME)_LIBS)
+  endif
 
-  ifdef MOTOR_ACSMOTION
+  ifdef MEASCOMP
+  ifdef ULDAQ
+    uldaq_DIR = $(ULDAQ)/lib
+
+    $(DBD_NAME)_DBD += measCompSupport.dbd
+    $(PROD_NAME)_LIBS := uldaq $($(PROD_NAME)_LIBS)
+    $(PROD_NAME)_LIBS := measComp $($(PROD_NAME)_LIBS)
+  endif
+  endif
+
+  ifdef MOTOR
     $(DBD_NAME)_DBD += AcsMotionSupport.dbd
     $(PROD_NAME)_LIBS := AcsMotion $($(PROD_NAME)_LIBS)
   endif
 
   ifeq ($(TIRPC), YES)
     $(PROD_NAME)_SYS_LIBS += tirpc
-  endif
-
+  endif   
 endif
 
 $(PROD_NAME)_LIBS += $(EPICS_BASE_IOC_LIBS)
@@ -437,6 +607,8 @@ $(PROD_NAME)_OBJS_vxWorks += $(EPICS_BASE_BIN)/vxComLibrary
 #$(foreach v, $(.VARIABLES), $(info $(v) = $($(v))))
 # print out just one variable
 #$(info SUPPORT = $(SUPPORT))
+
+SCRIPTS += GenLuaModules.pl
 
 #===========================
 

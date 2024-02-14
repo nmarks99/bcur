@@ -1,13 +1,13 @@
 epicsEnvSet("ROBOT_NAME", "")
 epicsEnvSet("ROBOT_IP", "164.54.104.148")
 
--- Set up UR dashboard server
-epicsEnvSet("UR_DASH_PORT", "asyn_dash")
-dbLoadRecords("$(URROBOT)/db/dashboard.db", "P=$(PREFIX), R=$(ROBOT_NAME), PORT=$(UR_DASH_PORT), ADDR=0")
-URRobotDashboardConfig("$(UR_DASH_PORT)", "$(ROBOT_IP)")
-
 -- Set up UR RTDE interface
-epicsEnvSet("UR_RTDE_PORT", "asyn_rtde")
-dbLoadRecords("$(URROBOT)/db/rtde_receive.db", "P=$(PREFIX), R=$(ROBOT_NAME), PORT=$(UR_RTDE_PORT), ADDR=0")
-dbLoadRecords("$(URROBOT)/db/rtde_io.db", "P=$(PREFIX), R=$(ROBOT_NAME), PORT=$(UR_RTDE_PORT), ADDR=0")
-URRobotRTDEConfig("$(UR_RTDE_PORT)", "$(ROBOT_IP)")
+epicsEnvSet("ASYN_PORT1", "ur_asyn1")
+dbLoadRecords("$(URROBOT)/db/rtde_receive.db", "P=$(PREFIX), R=$(ROBOT_NAME), PORT=$(ASYN_PORT1), ADDR=0")
+dbLoadRecords("$(URROBOT)/db/rtde_io.db", "P=$(PREFIX), R=$(ROBOT_NAME), PORT=$(ASYN_PORT1), ADDR=0")
+URRobotRTDEConfig("$(ASYN_PORT1)", "$(ROBOT_IP)")
+
+-- Set up UR dashboard server
+epicsEnvSet("ASYN_PORT2", "ur_asyn2")
+dbLoadRecords("$(URROBOT)/db/dashboard.db", "P=$(PREFIX), R=$(ROBOT_NAME), PORT=$(ASYN_PORT2), ADDR=0")
+URRobotDashboardConfig("$(ASYN_PORT2)", "$(ROBOT_IP)")

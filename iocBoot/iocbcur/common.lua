@@ -1,39 +1,15 @@
--- specify directories in which to search for included request files
--- Note that the vxWorks variables (e.g., 'startup') are from cdCommands
-set_requestfile_path("$(ADCORE)/db")
-set_requestfile_path("$(AUTOSAVE)/db")
-set_requestfile_path("$(BUSY)/db")
-set_requestfile_path("$(CALC)/db")
-set_requestfile_path("$(CAMAC)/db")
-set_requestfile_path("$(CAPUTRECORDER)/db")
-set_requestfile_path("$(DAC128V)/db")
-set_requestfile_path("$(DELAYGEN)/db")
-set_requestfile_path("$(DXP)/db")
-set_requestfile_path("$(DXPSITORO)/db")
-set_requestfile_path("$(IP)/db")
-set_requestfile_path("$(IP330)/db")
-set_requestfile_path("$(IPUNIDIG)/db")
-set_requestfile_path("$(LABJACK)/db")
-set_requestfile_path("$(LOVE)/db")
-set_requestfile_path("$(LUA)/db")
-set_requestfile_path("$(MCA)/db")
-set_requestfile_path("$(MEASCOMP)/db")
-set_requestfile_path("$(MODBUS)/db")
-set_requestfile_path("$(MOTOR)/db")
-set_requestfile_path("$(OPTICS)/db")
-set_requestfile_path("$(QUADEM)/db")
-set_requestfile_path("$(SCALER)/db")
-set_requestfile_path("$(SSCAN)/db")
-set_requestfile_path("$(SOFTGLUE)/db")
-set_requestfile_path("$(SOFTGLUEZYNQ)/db")
-set_requestfile_path("$(STD)/db")
-set_requestfile_path("$(VAC)/db")
-set_requestfile_path("$(VME)/db")
-set_requestfile_path("$(YOKOGAWA_DAS)/db")
-set_requestfile_path("$(TOP)/db")
+-- Setup search path for .req files. Include the db folders of every module specified in RELEASE
+luaCmd("modules=require('modules'); for mod,path in pairs(modules) do set_requestfile_path(path .. '/db') end")
 
--- debug output level
+-- Debug-output level
 save_restoreSet_Debug(0)
+
+-- caputRecorder
+iocshLoad("$(CAPUTRECORDER)/iocsh/caputRecorder.iocsh", "PREFIX=$(PREFIX)")
+
+-- Load 20 userScripts
+dbLoadRecords("$(LUA)/luaApp/Db/luascripts10.db", "P=$(PREFIX), R=set1:")
+dbLoadRecords("$(LUA)/luaApp/Db/luascripts10.db", "P=$(PREFIX), R=set2:")
 
 -- busy record
 dbLoadRecords("$(BUSY)/busyApp/Db/busyRecord.db", "P=$(PREFIX),R=mybusy1")

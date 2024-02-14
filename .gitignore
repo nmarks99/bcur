@@ -19,3 +19,4 @@ dbl-all.txt
 *.sav*
 scan1Menu.sav
 .loglogin
+.iocsh_history

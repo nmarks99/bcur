@@ -1919,8 +1919,8 @@ composite {
 	}
 	display[14] {
 		label="busyRecord"
-		name="xxBusyRecord.adl"
-		args="P=bcur:,R=mybusy"
+		name="xxBusyRecord2x.adl"
+		args="P=bcur:,R1=mybusy1,R2=mybusy2"
 	}
 	display[15] {
 		label="global enable"
