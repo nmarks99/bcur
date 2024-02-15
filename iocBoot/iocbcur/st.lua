@@ -12,8 +12,7 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 < settings.lua
 < common.lua
 
-< urRobot.lua
-
+iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
 dbLoadTemplate("gixs/gixs_sample.substitutions", "P=$(PREFIX), R=")
 dbLoadRecords("gixs/gixs.db","P=$(PREFIX),R=")
 -- dbLoadRecords("bcur.db","P=$(PREFIX),R=")
