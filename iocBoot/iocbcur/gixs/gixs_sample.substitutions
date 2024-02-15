@@ -7,15 +7,15 @@
 file "gixs/gixs_sample.db" {
     pattern
     {BlockID, EXISTS,  COMMENT}
-    {1, 1, "This is sample ID: $(BlockID)"}
-    {2, 1, "This is sample ID: $(BlockID)"}
-    {3, 1, "This is sample ID: $(BlockID)"}
-    {4, 1, "This is sample ID: $(BlockID)"}
-    {5, 1, "This is sample ID: $(BlockID)"}
-    {6, 1, "This is sample ID: $(BlockID)"}
-    {7, 1, "This is sample ID: $(BlockID)"}
-    {8, 1, "This is sample ID: $(BlockID)"}
-    {9, 1, "This is sample ID: $(BlockID)"}
+    { 1, 1, "This is sample ID: $(BlockID)"}
+    { 2, 1, "This is sample ID: $(BlockID)"}
+    { 3, 1, "This is sample ID: $(BlockID)"}
+    { 4, 1, "This is sample ID: $(BlockID)"}
+    { 5, 1, "This is sample ID: $(BlockID)"}
+    { 6, 1, "This is sample ID: $(BlockID)"}
+    { 7, 1, "This is sample ID: $(BlockID)"}
+    { 8, 1, "This is sample ID: $(BlockID)"}
+    { 9, 1, "This is sample ID: $(BlockID)"}
     {10, 1, "This is sample ID: $(BlockID)"}
     {11, 0, "This is sample ID: $(BlockID)"}
     {12, 0, "This is sample ID: $(BlockID)"}
