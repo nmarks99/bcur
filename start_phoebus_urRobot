@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URROBOT_PATH="/home/beams/NMARKS/devel/epics_ur_robot/epics-urRobot/"
+URROBOT_PATH="/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot"
 P="bcur:"
 R=""
 
