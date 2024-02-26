@@ -47,7 +47,8 @@ BEGIN
 	###########################
 	
 	# Startup Script for the IOC to run
-	$ENV{IOC_STARTUP_FILE}="st.cmd.Linux";
+	$ENV{IOC_STARTUP_FILE}="st.lua";
+	#! $ENV{IOC_STARTUP_FILE}="st.cmd.Linux";
 	#! $ENV{IOC_STARTUP_FILE}="st.cmd.Cygwin";
 	#! $ENV{IOC_STARTUP_FILE}="st.cmd.Win32";
 	#! $ENV{IOC_STARTUP_FILE}="st.cmd.Win64";
