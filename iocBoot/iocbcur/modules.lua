@@ -1,5 +1,5 @@
 local MODULES = {
-	["TOP"] = "/home/beams0/NMARKS/devel/epics_ur_robot/upgrade_63_bcur/bcur",
+	["TOP"] = "/net/s100dserv/xorApps/epics/synApps_6_3/ioc/bcur",
 	["SUPPORT"] = "/APSshare/epics/synApps_6_3/support",
 	["EPICS_BASE"] = "/APSshare/epics/base-7.0.8",
 	["ALIVE"] = "/APSshare/epics/synApps_6_3/support/alive-R1-4-1",
