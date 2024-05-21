@@ -16,7 +16,7 @@ epicsEnvSet("GROUP", "BCDA")
 epicsEnvSet("STREAM_PROTOCOL_PATH", ".")
 
 -- search path for lua scripts
-epicsEnvSet("LUA_SCRIPT_PATH", "./scripts")
+epicsEnvSet("LUA_SCRIPT_PATH", "lua_scripts")
 
 -- Specify largest array CA will transport
 -- Note for N doubles, need N*8 bytes+some overhead

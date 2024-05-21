@@ -1,3 +1,11 @@
+-- autosave
+iocshLoad("$(AUTOSAVE)/iocsh/autosave_settings.iocsh", "PREFIX=$(PREFIX), SAVE_PATH=$(TOP)/iocBoot/$(IOC)")
+iocshLoad("$(AUTOSAVE)/iocsh/save_restore.iocsh",      "PREFIX=$(PREFIX), POSITIONS_FILE=auto_positions, SETTINGS_FILE=auto_settings")
+iocshLoad("$(AUTOSAVE)/iocsh/autosaveBuild.iocsh",     "PREFIX=$(PREFIX), BUILD_PATH=autosave")
+-- -- Note that you can restore a .sav file without also autosaving to it.
+-- set_pass0_restoreFile("octupole_settings.sav")
+-- set_pass1_restoreFile("octupole_settings.sav")
+
 -- Setup search path for .req files. Include the db folders of every module specified in RELEASE
 luaCmd("modules=require('modules'); for mod,path in pairs(modules) do set_requestfile_path(path .. '/db') end")
 

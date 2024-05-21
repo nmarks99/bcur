@@ -13,8 +13,8 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 < common.lua
 
 -- Setup urRobot using urRobot.iocsh example
-iocshLoad("$(URROBOT)/iocsh/urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
--- iocshLoad("./urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
+iocshLoad("urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
+dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX),R=")
 
 -------------------------------------------------------------------------------
 iocInit()
