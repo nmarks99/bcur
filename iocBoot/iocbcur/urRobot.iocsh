@@ -24,6 +24,7 @@
 #-		      	  Default: asyn_gripper
 #- ###################################################
 
+
 # Set up UR Dashboard server
 URDashboardConfig("$(DASH_INSTANCE=asyn_dash)", "$(IP)")
 dbLoadRecords("$(URROBOT)/db/dashboard.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(DASH_INSTANCE=asyn_dash), ADDR=0")
@@ -42,4 +43,7 @@ dbLoadRecords("$(URROBOT)/db/rtde_control.db", "P=$(PREFIX), R=$(ROBOT_NAME=), P
 
 # Set up Robotiq Gripper
 URGripperConfig("$(GRIPPER_INSTANCE=asyn_gripper)", "$(IP)")
-dbLoadRecords("$(URROBOT)/db/robotiq_gripper.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(GRIPPER_INSTANCE=asyn_gripper), ADDR=0")
+dbLoadRecords("$(URROBOT)/db/robotiq_gripper.db", "P=$(PREFIX), R=$(ROBOT_NAME=), MIN_POS=3, MAX_POS=248, PORT=$(GRIPPER_INSTANCE=asyn_gripper), ADDR=0")
+
+# add URROBOT/urRobotApp/src to LUA_SCRIPT_PATH for waypoint functionality
+epicsEnvSet("LUA_SCRIPT_PATH", "$(LUA_SCRIPT_PATH=):$(URROBOT)/urRobotApp/src")

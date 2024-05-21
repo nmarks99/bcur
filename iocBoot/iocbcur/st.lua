@@ -12,16 +12,13 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 < settings.lua
 < common.lua
 
--- Setup urRobot using urRobot.iocsh example
+-- Setup urRobot
 iocshLoad("urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
 dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX),R=")
 
 -------------------------------------------------------------------------------
 iocInit()
 -------------------------------------------------------------------------------
-
--- write all the PV names to a local file
--- dbl > dbl-all.txt
 
 -- Diagnostic: CA links in all records
 dbcar(0,1)
