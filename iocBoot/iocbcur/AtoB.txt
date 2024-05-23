@@ -1,9 +1,0 @@
-$(P)$(R)WaypointJ:1:moveJ
-$(P)$(R)WaypointL:2:moveL
-$(P)$(R)WaypointL:3:moveL
-$(P)$(R)WaypointL:4:moveL
-$(P)$(R)WaypointL:5:moveL
-$(P)$(R)WaypointL:7:moveL
-$(P)$(R)WaypointL:8:moveL
-$(P)$(R)WaypointL:7:moveL
-$(P)$(R)WaypointJ:1:moveJ
