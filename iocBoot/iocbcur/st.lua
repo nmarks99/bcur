@@ -14,11 +14,13 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 
 -- Setup urRobot
 iocshLoad("urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
-dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX),R=")
+dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX)")
 
 -------------------------------------------------------------------------------
 iocInit()
 -------------------------------------------------------------------------------
+
+iocshCmd("dbl > dbl_all.txt")
 
 -- Diagnostic: CA links in all records
 dbcar(0,1)
