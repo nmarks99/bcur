@@ -1,0 +1,29 @@
+# this instantiates the python class that defines the method (PINI=1)
+record(bo, "$(P)Py:Initialize") {
+    field(PINI, 1)
+    field(DTYP, "pydev")
+    field(OUT, "@from $(SCRIPT) import $(CLASS); $(INSTANCE) = $(CLASS)()")
+}
+
+record(bo, "$(P)Py:Disconnect") {
+    field(DTYP, "pydev")
+    field(OUT, "@$(INSTANCE).disconnect()")
+}
+
+record(bo, "$(P)Py:OpenGripper") {
+    field(DTYP, "pydev")
+    field(OUT, "@$(INSTANCE).open_gripper()")
+}
+
+record(bo, "$(P)Py:CloseGripper") {
+    field(DTYP, "pydev")
+    field(OUT, "@$(INSTANCE).close_gripper()")
+}
+
+# 1 when the action is done, otherwise 0
+# Note function decorator and pydev.iointr param name 'ACTION_DONE'
+record(bi, "$(P)Py:ActionDone") {
+    field(DTYP, "pydev")
+    field(INP, "@pydev.iointr('ACTION_DONE')")
+    field(SCAN, "I/O Intr")
+}

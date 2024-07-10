@@ -2,6 +2,9 @@
 
 < envPaths
 
+-- Search path for PyDevice python scripts
+epicsEnvSet("PYTHONPATH","$(TOP)/iocBoot/iocbcur/scripts/")
+
 errlogInit(20000)
 
 -- Tell EPICS all about the record types, device-support modules, drivers,
@@ -12,9 +15,11 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 < settings.lua
 < common.lua
 
--- Setup urRobot
 iocshLoad("urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
 dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX)")
+
+-- PyDevice PVs for interating with the robot via python
+dbLoadRecords("py_robot.db", "P=$(PREFIX), IP=164.54.104.148, SCRIPT=urx_robot, CLASS=PyRobot, INSTANCE=robot")
 
 -------------------------------------------------------------------------------
 iocInit()

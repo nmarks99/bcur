@@ -1,0 +1,5 @@
+# runs a main() function in a python script defined by the VAL field of this record
+record(stringout, "$(P)run_python_script") {
+    field(DTYP, "pydev")
+    field(OUT,  "@import %VAL%;%VAL%.main()")
+}

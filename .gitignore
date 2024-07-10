@@ -21,3 +21,4 @@ scan1Menu.sav
 .loglogin
 .iocsh_history
 logs/
+__pycache__

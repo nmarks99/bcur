@@ -1,6 +1,7 @@
 TOP=../..
 
 include $(TOP)/configure/CONFIG
+include $(PYDEVICE)/configure/CONFIG.PyDevice
 #----------------------------------------
 #  ADD MACRO DEFINITIONS AFTER THIS LINE
 #=============================
@@ -151,6 +152,11 @@ endif
 ifdef MODBUS
   $(DBD_NAME)_DBD += modbusSupport.dbd
   $(PROD_NAME)_LIBS := modbus $($(PROD_NAME)_LIBS)
+endif
+
+ifdef PYDEVICE
+  $(DBD_NAME)_DBD += pydev.dbd
+  $(PROD_NAME)_LIBS := pydev $($(PROD_NAME)_LIBS)
 endif
 
 ifdef URROBOT
