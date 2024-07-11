@@ -19,7 +19,7 @@ iocshLoad("urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
 dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX)")
 
 -- PyDevice PVs for interating with the robot via python
-dbLoadRecords("py_robot.db", "P=$(PREFIX), IP=164.54.104.148, SCRIPT=urx_robot, CLASS=PyRobot, INSTANCE=robot")
+-- dbLoadRecords("py_robot.db", "P=$(PREFIX), IP=164.54.104.148, SCRIPT=urx_robot, CLASS=PyRobot, INSTANCE=robot")
 
 -------------------------------------------------------------------------------
 iocInit()

@@ -522,7 +522,8 @@ bcur:RobotiqGripper:Calibrated
 bcur:RobotiqGripper:IsActive
 bcur:RobotiqGripper:IsOpen
 bcur:RobotiqGripper:IsClosed
-bcur:Py:ActionDone
+bcur:RobotiqGripper:IsStoppedInner
+bcur:RobotiqGripper:IsStoppedOuter
 bcur:SR_heartbeat
 bcur:SR_i_am_alive
 bcur:SR_deadIfZero
@@ -901,10 +902,6 @@ bcur:WaypointL:25:Gripper
 bcur:WaypointL:25:Action
 bcur:WaypointL:25:ActionDone
 bcur:WaypointL:25:moveL
-bcur:Py:Initialize
-bcur:Py:Disconnect
-bcur:Py:OpenGripper
-bcur:Py:CloseGripper
 bcur:caputRecorderAddDelayCmd
 bcur:caputRecorderReloadMacros
 bcur:caputRecorderMacrosBusy
