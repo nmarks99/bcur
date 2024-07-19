@@ -25,7 +25,7 @@ dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX)")
 iocInit()
 -------------------------------------------------------------------------------
 
-iocshCmd("dbl > dbl_all.txt")
+iocshCmd("dbl > dbl-all.txt")
 
 -- Diagnostic: CA links in all records
 dbcar(0,1)
