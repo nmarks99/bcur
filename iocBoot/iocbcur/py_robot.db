@@ -20,6 +20,11 @@ record(bo, "$(P)Py:CloseGripper") {
     field(OUT, "@$(INSTANCE).close_gripper()")
 }
 
+record(bo, "$(P)Py:ExampleProcess") {
+    field(DTYP, "pydev")
+    field(OUT, "@$(INSTANCE).example_process()")
+}
+
 # 1 when the action is done, otherwise 0
 # Note function decorator and pydev.iointr param name 'ACTION_DONE'
 record(bi, "$(P)Py:ActionDone") {

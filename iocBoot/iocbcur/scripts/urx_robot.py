@@ -19,10 +19,6 @@ class PyRobot:
         self.robot = urx.Robot(ROBOT_IP)
         self.gripper = RobotiqGripper()
         self.gripper.connect(ROBOT_IP, GRIPPER_PORT)
-    
-    #  def __del__(self):
-        #  self.robot.close()
-        #  self.gripper.disconnect()
 
     def disconnect(self):
         self.gripper.disconnect()
