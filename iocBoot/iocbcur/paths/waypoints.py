@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from epics import caget, caput
 import argparse
 import time
@@ -40,12 +41,15 @@ class Waypoint:
         if self.override is not None:
             print(f"caput {self.pv_name}:ActionOpt {self.override}", end="\t")
             caput(f"{self.pv_name}:ActionOpt", self.override)
+
+        # do the move and action and wait for it to complete
         print(f"caput {self.move_pv} 1")
-        #  caput(self.move_pv, 1) # TODO: uncomment to move
-        #  self._wait() # TODO: uncomment to move
+        caput(self.move_pv, 1)
+        self._wait()
+
+        # set action back to what it was before
         print(f"caput {self.pv_name}:ActionOpt {action0}")
-        caput(f"{self.pv_name}:ActionOpt", action0)
-        print("")
+        caput(f"{self.pv_name}:ActionOpt\n", action0)
 
 
 def read_path_file(filename, prefix, max_waypoints):
@@ -87,7 +91,7 @@ def main():
     path = read_path_file(args.filename, "bcur:", max_waypoints=25)
 
     for waypoint in path:
-        waypoint.go()
+        waypoint.go() # blocking
 
 
 if __name__ == "__main__":
