@@ -83,36 +83,53 @@ def read_path_file(filename, prefix, max_waypoints):
 
 
 def main():
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument('filename', help='Filepath to waypoints path file')
-    args = parser.parse_args()
     
-    done = caget("bcur:Control:AsyncMoveDone")
-    if not done: 
-        print(f"Done = {done}")
+    if caget("bcur:Control:AsyncMoveDone") == 0:
         print("Motion in progress...please wait")
         exit()
     
+    caput("bcur:DemoStopped", 0)
+
     if caget("bcur:SampleLocation") == "A":
-        if "BtoA.path" in args.filename:
-            print("Sample already at A")
+        ind = 0
+    elif caget("bcur:SampleLocation") == "B":
+        ind = 1
+    else:
+        print("invalid sample location")
+        exit()
+
+    filenames = (
+        "/net/s100dserv/xorApps/epics/synApps_6_3/ioc/bcur/iocBoot/iocbcur/paths/BtoA.path",
+        "/net/s100dserv/xorApps/epics/synApps_6_3/ioc/bcur/iocBoot/iocbcur/paths/AtoB.path",
+    )
+
+    while True:
+        ind = 1 ^ ind
+        fname = filenames[ind]
+        print(f"Running {fname}")
+
+        if caget("bcur:Control:AsyncMoveDone") == 0:
+            print("Motion in progress...please wait")
             exit()
+        
+        path = read_path_file(fname, "bcur:", max_waypoints=25)
+        
+        stopflag = False
+        for waypoint in path:
+            if not stopflag:
+                if caget("bcur:DemoStopped") == 1:
+                    print("Stopping after path completes")
+                    stopflag = True # stop after this path
+            waypoint.go() # blocking
 
-    if caget("bcur:SampleLocation") == "B":
-        if "AtoB.path" in args.filename:
-            print("Sample already at B")
-            exit()
+        if "AtoB.path" in fname:
+            caput("bcur:SampleLocation", "B")
+        elif "BtoA.path" in fname:
+            caput("bcur:SampleLocation", "A")
 
-    path = read_path_file(args.filename, "bcur:", max_waypoints=25)
-
-    for waypoint in path:
-        waypoint.go() # blocking
-
-    if "AtoB.path" in args.filename:
-        caput("bcur:SampleLocation", "B")
-    elif "BtoA.path" in args.filename:
-        caput("bcur:SampleLocation", "A")
+        if stopflag:
+            print("Stopped by user")
+            break
 
 
 if __name__ == "__main__":
