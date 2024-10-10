@@ -62,10 +62,7 @@ pattern
 {25}
 }
 
-# # Adds functionality to move through a path of waypoints
-# file "$(URROBOT)/db/path.db"
-# {
-# pattern
-# {MAXJ, MAXL}
-# {25, 25}
-# }
+file "$(URROBOT)/db/waypoint_actions10.db"
+{
+{}
+}

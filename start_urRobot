@@ -37,6 +37,10 @@ function find_prefix() {
     done
 }
 
+# Add synApps modules to display path
+export EPICS_APP=`dirname ${BASH_SOURCE:-$0}`
+export EPICS_APP_UI_DIR=${EPICS_APP}/bcurApp/op/ui
+
 ##################################################
 
 # Define paths to display manager binaries
@@ -57,8 +61,8 @@ if [[ $DM == "caqtdm" ]]; then
     export UI_DIR=${URROBOT_PATH}/urRobotApp/op/ui
     export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${UI_DIR}
     export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${UI_DIR}/autoconvert
+    source ${EPICS_APP}/setup_epics_common caqtdm
     ${CAQTDM} -style plastique -noMsg -macro "P=${PREFIX}" "urRobot.ui" &
-
 elif [[ $DM == "medm" ]]; then
     export ADL_DIR=${URROBOT_PATH}/urRobotApp/op/adl
     if [ -z "$EPICS_DISPLAY_PATH" ]; then
@@ -66,14 +70,15 @@ elif [[ $DM == "medm" ]]; then
     else
         export EPICS_DISPLAY_PATH=$EPICS_DISPLAY_PATH:${ADL_DIR}
     fi
+    source ${EPICS_APP}/setup_epics_common medm
     ${MEDM} -macro "P=${PREFIX}" -x "urRobot.adl" &
-
 elif [[ $DM == "phoebus" ]]; then
     export EPICS_APP=$(cd "$(dirname "$BASH_SOURCE")"; cd -P "$(dirname "$(readlink "$BASH_SOURCE" || echo .)")"; pwd)
     export EPICS_APP_BOB_DIR=${URROBOT_PATH}/urRobotApp/op/bob
     cd ${EPICS_APP_BOB_DIR}
     export BOB_FILE="$(pwd)/urRobot.bob" # needs an absolute path??
     export BOB_FILE_MACROS="P=${PREFIX}"
+    # TODO: how to add synApps modules paths
     ${PHOEBUS} -layout $EPICS_APP/phoebus.layout -resource "file:${BOB_FILE}?${BOB_FILE_MACROS}&target=window"
 else
     echo "Display manager must be one of the following: caqtdm, medm, phoebus "

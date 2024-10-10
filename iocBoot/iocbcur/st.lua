@@ -15,8 +15,11 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 < settings.lua
 < common.lua
 
+-- Many waypoints fetching action descs causes ring buffer overflow warning...
+-- Increasing setOnce queue fixes this.
+scanOnceSetQueueSize(2000)
+
 iocshLoad("urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
--- iocshLoad("simple_urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
 dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX)")
 dbLoadTemplate("paths.substitutions", "P=$(PREFIX)")
 
