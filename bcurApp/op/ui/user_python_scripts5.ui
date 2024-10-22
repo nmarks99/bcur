@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QMainWindow" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>220</width>
+    <height>160</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>user_python_scripts5</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#centralwidget {background: rgba(196,196,196,255);}
+QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="caTextEntry" name="catextentry">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>10</y>
+      <width>120</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="channel" stdset="0">
+     <string notr="true">$(P)PythonScript1</string>
+    </property>
+    <property name="background">
+     <color>
+      <red>87</red>
+      <green>202</green>
+      <blue>228</blue>
+     </color>
+    </property>
+    <property name="colorMode">
+     <enum>caLineEdit::Static</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>15</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>1.</string>
+    </property>
+   </widget>
+   <widget class="caTextEntry" name="catextentry_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>40</y>
+      <width>120</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="channel" stdset="0">
+     <string notr="true">$(P)PythonScript2</string>
+    </property>
+    <property name="background">
+     <color>
+      <red>87</red>
+      <green>202</green>
+      <blue>228</blue>
+     </color>
+    </property>
+    <property name="colorMode">
+     <enum>caLineEdit::Static</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>15</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>2.</string>
+    </property>
+   </widget>
+   <widget class="caTextEntry" name="catextentry_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>70</y>
+      <width>120</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="channel" stdset="0">
+     <string notr="true">$(P)PythonScript3</string>
+    </property>
+    <property name="background">
+     <color>
+      <red>87</red>
+      <green>202</green>
+      <blue>228</blue>
+     </color>
+    </property>
+    <property name="colorMode">
+     <enum>caLineEdit::Static</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>15</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>3.</string>
+    </property>
+   </widget>
+   <widget class="caTextEntry" name="catextentry_4">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>100</y>
+      <width>120</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="channel" stdset="0">
+     <string notr="true">$(P)PythonScript4</string>
+    </property>
+    <property name="background">
+     <color>
+      <red>87</red>
+      <green>202</green>
+      <blue>228</blue>
+     </color>
+    </property>
+    <property name="colorMode">
+     <enum>caLineEdit::Static</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>15</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>4.</string>
+    </property>
+   </widget>
+   <widget class="caTextEntry" name="catextentry_5">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>130</y>
+      <width>120</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="channel" stdset="0">
+     <string notr="true">$(P)PythonScript5</string>
+    </property>
+    <property name="background">
+     <color>
+      <red>87</red>
+      <green>202</green>
+      <blue>228</blue>
+     </color>
+    </property>
+    <property name="colorMode">
+     <enum>caLineEdit::Static</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>15</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>5.</string>
+    </property>
+   </widget>
+   <widget class="caMessageButton" name="camessagebutton">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>10</y>
+      <width>50</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="channel" stdset="0">
+     <string notr="true">$(P)RunPythonScript1.PROC</string>
+    </property>
+    <property name="label">
+     <string notr="true">Run</string>
+    </property>
+    <property name="background">
+     <color>
+      <red>87</red>
+      <green>202</green>
+      <blue>228</blue>
+     </color>
+    </property>
+    <property name="releaseMessage">
+     <string notr="true">1</string>
+    </property>
+   </widget>
+   <widget class="caMessageButton" name="camessagebutton_2">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>40</y>
+      <width>50</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="channel" stdset="0">
+     <string notr="true">$(P)RunPythonScript2.PROC</string>
+    </property>
+    <property name="label">
+     <string notr="true">Run</string>
+    </property>
+    <property name="background">
+     <color>
+      <red>87</red>
+      <green>202</green>
+      <blue>228</blue>
+     </color>
+    </property>
+    <property name="releaseMessage">
+     <string notr="true">1</string>
+    </property>
+   </widget>
+   <widget class="caMessageButton" name="camessagebutton_3">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>70</y>
+      <width>50</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="channel" stdset="0">
+     <string notr="true">$(P)RunPythonScript3.PROC</string>
+    </property>
+    <property name="label">
+     <string notr="true">Run</string>
+    </property>
+    <property name="background">
+     <color>
+      <red>87</red>
+      <green>202</green>
+      <blue>228</blue>
+     </color>
+    </property>
+    <property name="releaseMessage">
+     <string notr="true">1</string>
+    </property>
+   </widget>
+   <widget class="caMessageButton" name="camessagebutton_4">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>100</y>
+      <width>50</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="channel" stdset="0">
+     <string notr="true">$(P)RunPythonScript4.PROC</string>
+    </property>
+    <property name="label">
+     <string notr="true">Run</string>
+    </property>
+    <property name="background">
+     <color>
+      <red>87</red>
+      <green>202</green>
+      <blue>228</blue>
+     </color>
+    </property>
+    <property name="releaseMessage">
+     <string notr="true">1</string>
+    </property>
+   </widget>
+   <widget class="caMessageButton" name="camessagebutton_5">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>130</y>
+      <width>50</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="channel" stdset="0">
+     <string notr="true">$(P)RunPythonScript5.PROC</string>
+    </property>
+    <property name="label">
+     <string notr="true">Run</string>
+    </property>
+    <property name="background">
+     <color>
+      <red>87</red>
+      <green>202</green>
+      <blue>228</blue>
+     </color>
+    </property>
+    <property name="releaseMessage">
+     <string notr="true">1</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>caTextEntry</class>
+   <extends>caLineEdit</extends>
+   <header>caTextEntry</header>
+  </customwidget>
+  <customwidget>
+   <class>caMessageButton</class>
+   <extends>QPushButton</extends>
+   <header>caMessageButton</header>
+  </customwidget>
+  <customwidget>
+   <class>caLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>caLineEdit</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

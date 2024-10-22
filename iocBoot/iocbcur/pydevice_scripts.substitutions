@@ -1,0 +1,10 @@
+file "user_python_script.db"
+{
+pattern
+{N}
+{1}
+{2}
+{3}
+{4}
+{5}
+}

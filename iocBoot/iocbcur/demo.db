@@ -1,7 +1,0 @@
-record(stringout, "$(P)SampleLocation") {
-    field(VAL, "A")
-}
-
-record(bo, "$(P)DemoStopped") {
-    field(VAL, 1)
-}

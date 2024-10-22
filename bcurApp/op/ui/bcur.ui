@@ -314,7 +314,7 @@ QWidget[Fill=&quot;True&quot;] { background: rgba(0,0,0,0); }</string>
            <item row="3" column="4">
             <widget class="caRelatedDisplay" name="carelateddisplay_53">
              <property name="label">
-              <string notr="true">-</string>
+              <string notr="true">-UR Robot</string>
              </property>
              <property name="foreground">
               <color>
@@ -334,10 +334,10 @@ QWidget[Fill=&quot;True&quot;] { background: rgba(0,0,0,0); }</string>
               <string>1</string>
              </property>
              <property name="files">
-              <string>1</string>
+              <string>urRobot.ui</string>
              </property>
              <property name="args">
-              <string>1</string>
+              <string>P=bcur:</string>
              </property>
              <property name="stackingMode" stdset="0">
               <enum>caRowColMenu::Menu</enum>

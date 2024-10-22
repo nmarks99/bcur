@@ -72,6 +72,11 @@ fi
 #######################################
 # start caQtDM
 
+URROBOT_PATH=/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot
+
+export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${URROBOT_PATH}/urRobotApp/op/ui
+export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${URROBOT_PATH}/urRobotApp/op/ui/autoconvert
+
 /APSshare/bin/caQtDM -style plastique -noMsg -macro ${UI_FILE_MACROS} ${DEFAULT_UI_FILE} &
 
 
