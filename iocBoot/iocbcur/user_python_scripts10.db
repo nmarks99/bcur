@@ -1,0 +1,117 @@
+record(bi, "$(P)PythonScript:Running") {
+    field(DTYP, "pydev")
+    field(INP, "@pydev.iointr('RUNNING')")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringout, "$(P)PythonScript1") {
+    field(OUT, "$(P)RunPythonScript1.VAL NPP")
+    field(PINI,1)
+}
+
+record(stringout, "$(P)RunPythonScript1") {
+    field(DESC, "Script name without .py extension")
+    field(DTYP, "pydev")
+    field(VAL, "")
+    field(OUT, "@from VAL import main; main()")
+}
+
+record(stringout, "$(P)PythonScript2") {
+    field(OUT, "$(P)RunPythonScript2.VAL NPP")
+}
+
+record(stringout, "$(P)RunPythonScript2") {
+    field(DESC, "Script name without .py extension")
+    field(DTYP, "pydev")
+    field(VAL, "")
+    field(OUT, "@from VAL import main; main()")
+}
+
+record(stringout, "$(P)PythonScript3") {
+    field(OUT, "$(P)RunPythonScript3.VAL NPP")
+}
+
+record(stringout, "$(P)RunPythonScript3") {
+    field(DESC, "Script name without .py extension")
+    field(DTYP, "pydev")
+    field(VAL, "")
+    field(OUT, "@from VAL import main; main()")
+}
+
+record(stringout, "$(P)PythonScript4") {
+    field(OUT, "$(P)RunPythonScript4.VAL NPP")
+}
+
+record(stringout, "$(P)RunPythonScript4") {
+    field(DESC, "Script name without .py extension")
+    field(DTYP, "pydev")
+    field(VAL, "")
+    field(OUT, "@from VAL import main; main()")
+}
+
+record(stringout, "$(P)PythonScript5") {
+    field(OUT, "$(P)RunPythonScript5.VAL NPP")
+}
+
+record(stringout, "$(P)RunPythonScript5") {
+    field(DESC, "Script name without .py extension")
+    field(DTYP, "pydev")
+    field(VAL, "")
+    field(OUT, "@from VAL import main; main()")
+}
+
+record(stringout, "$(P)PythonScript6") {
+    field(OUT, "$(P)RunPythonScript6.VAL NPP")
+}
+
+record(stringout, "$(P)RunPythonScript6") {
+    field(DESC, "Script name without .py extension")
+    field(DTYP, "pydev")
+    field(VAL, "")
+    field(OUT, "@from VAL import main; main()")
+}
+
+record(stringout, "$(P)PythonScript7") {
+    field(OUT, "$(P)RunPythonScript7.VAL NPP")
+}
+
+record(stringout, "$(P)RunPythonScript7") {
+    field(DESC, "Script name without .py extension")
+    field(DTYP, "pydev")
+    field(VAL, "")
+    field(OUT, "@from VAL import main; main()")
+}
+
+record(stringout, "$(P)PythonScript8") {
+    field(OUT, "$(P)RunPythonScript8.VAL NPP")
+}
+
+record(stringout, "$(P)RunPythonScript8") {
+    field(DESC, "Script name without .py extension")
+    field(DTYP, "pydev")
+    field(VAL, "")
+    field(OUT, "@from VAL import main; main()")
+}
+
+record(stringout, "$(P)PythonScript9") {
+    field(OUT, "$(P)RunPythonScript9.VAL NPP")
+}
+
+record(stringout, "$(P)RunPythonScript9") {
+    field(DESC, "Script name without .py extension")
+    field(DTYP, "pydev")
+    field(VAL, "")
+    field(OUT, "@from VAL import main; main()")
+}
+
+record(stringout, "$(P)PythonScript10") {
+    field(OUT, "$(P)RunPythonScript10.VAL NPP")
+}
+
+record(stringout, "$(P)RunPythonScript10") {
+    field(DESC, "Script name without .py extension")
+    field(DTYP, "pydev")
+    field(VAL, "")
+    field(OUT, "@from VAL import main; main()")
+}
+

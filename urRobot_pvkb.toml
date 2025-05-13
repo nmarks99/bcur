@@ -1,0 +1,22 @@
+prefix = "bcur:"
+
+put = [
+    {pv="Control:ResetPoseCmd.PROC", value=1},
+    {pv="Control:AutoMoveL", value=1}
+]
+
+[keybindings]
+key_w = {pv="Control:PoseYTweakFwd", value=1}
+key_s = {pv="Control:PoseYTweakRev", value=1}
+key_W = {pv="Control:PoseZTweakFwd", value=1}
+key_S = {pv="Control:PoseZTweakRev", value=1}
+key_d = {pv="Control:PoseXTweakFwd", value=1}
+key_a = {pv="Control:PoseXTweakRev", value=1}
+
+key_o = {pv="RobotiqGripper:Open.PROC", value=1}
+key_p = {pv="RobotiqGripper:Close.PROC", value=1}
+
+key_h = {pv="WaypointJ:1:moveJ.PROC", value=1}
+key_r = {pv="Control:ResetPoseCmd.PROC", value=1}
+
+key_x = {pv="Control:Stop.PROC", value=1}

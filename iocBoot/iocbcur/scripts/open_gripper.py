@@ -5,7 +5,7 @@ ROBOT_IP = "164.54.104.148"
 GRIPPER_PORT = 63352
 
 def main():
-    pydev.iointr("RUNNING1", 1)
+    pydev.iointr("RUNNING", 1)
 
     gripper = RobotiqGripper()
     gripper.connect(ROBOT_IP, GRIPPER_PORT)
@@ -18,7 +18,7 @@ def main():
 
     gripper.disconnect()
 
-    pydev.iointr("RUNNING1", 0)
+    pydev.iointr("RUNNING", 0)
 
 
 if __name__ == "__main__":

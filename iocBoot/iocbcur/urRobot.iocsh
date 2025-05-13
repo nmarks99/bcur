@@ -38,8 +38,8 @@ RTDEInOutConfig("$(RTDE_IO_INSTANCE=asyn_rtde_io)", "$(IP)")
 dbLoadRecords("$(URROBOT)/db/rtde_io.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(RTDE_IO_INSTANCE=asyn_rtde_io), ADDR=0")
 
 # Set up UR RTDE Control interface
-# RTDEControlConfig("$(RTDE_CTRL_INSTANCE=asyn_rtde_ctrl)", "$(IP)")
-# dbLoadRecords("$(URROBOT)/db/rtde_control.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(RTDE_CTRL_INSTANCE=asyn_rtde_ctrl), ADDR=0")
+RTDEControlConfig("$(RTDE_CTRL_INSTANCE=asyn_rtde_ctrl)", "$(IP)")
+dbLoadRecords("$(URROBOT)/db/rtde_control.db", "P=$(PREFIX), R=$(ROBOT_NAME=), PORT=$(RTDE_CTRL_INSTANCE=asyn_rtde_ctrl), ADDR=0")
 
 # Set up Robotiq Gripper
 URGripperConfig("$(GRIPPER_INSTANCE=asyn_gripper)", "$(IP)")

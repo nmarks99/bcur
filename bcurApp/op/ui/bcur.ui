@@ -290,7 +290,7 @@ QWidget[Fill=&quot;True&quot;] { background: rgba(0,0,0,0); }</string>
            <item row="2" column="4">
             <widget class="caRelatedDisplay" name="carelateddisplay_16">
              <property name="label">
-              <string notr="true">-</string>
+              <string notr="true">-Python Scripts</string>
              </property>
              <property name="foreground">
               <color>
@@ -305,6 +305,15 @@ QWidget[Fill=&quot;True&quot;] { background: rgba(0,0,0,0); }</string>
                <green>132</green>
                <blue>0</blue>
               </color>
+             </property>
+             <property name="labels">
+              <string>user_python_scripts5.ui</string>
+             </property>
+             <property name="files">
+              <string>user_python_scripts5.ui</string>
+             </property>
+             <property name="args">
+              <string>P=$(P)</string>
              </property>
              <property name="stackingMode" stdset="0">
               <enum>caRowColMenu::Menu</enum>
@@ -614,7 +623,7 @@ QWidget[Fill=&quot;True&quot;] { background: rgba(0,0,0,0); }</string>
               </font>
              </property>
              <property name="label">
-              <string notr="true">-   Love    </string>
+              <string notr="true">-</string>
              </property>
              <property name="foreground">
               <color>
@@ -631,13 +640,13 @@ QWidget[Fill=&quot;True&quot;] { background: rgba(0,0,0,0); }</string>
               </color>
              </property>
              <property name="labels">
-              <string>Love controllers</string>
+              <string>-</string>
              </property>
              <property name="files">
-              <string>LoveList4.ui</string>
+              <string/>
              </property>
              <property name="args">
-              <string>P=bcur:,Q1=Love1,Q2=Love2,Q3=Love3,Q4=Love4</string>
+              <string/>
              </property>
              <property name="stackingMode" stdset="0">
               <enum>caRowColMenu::Menu</enum>
