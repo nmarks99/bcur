@@ -566,13 +566,13 @@ QWidget[Fill=&quot;True&quot;] { background: rgba(0,0,0,0); }</string>
               </color>
              </property>
              <property name="labels">
-              <string>soft motors 1-10;Pseudo-motors;motor status 16</string>
+              <string>soft motors 1-10;soft motors 11-20;Pseudo-motors;motor status 16</string>
              </property>
              <property name="files">
-              <string>softMotors10.ui;topMotors4.ui;motorStatus16.ui</string>
+              <string>softMotors10.ui;softMotors10.ui;topMotors4.ui;motorStatus16.ui</string>
              </property>
              <property name="args">
-              <string>P=bcur:,SM1=SM1,SM2=SM2,SM3=SM3,SM4=SM4,SM5=SM5,SM6=SM6,SM7=SM7,SM8=SM8,SM9=SM9,SM10=SM10;P=bcur:,M1=pm1,M2=pm2,M3=pm3,M4=pm4;P=bcur:</string>
+              <string>P=bcur:,SM1=SM1,SM2=SM2,SM3=SM3,SM4=SM4,SM5=SM5,SM6=SM6,SM7=SM7,SM8=SM8,SM9=SM9,SM10=SM10;P=bcur:,SM1=SM11,SM2=SM12,SM3=SM13,SM4=SM14,SM5=SM15,SM6=SM16,SM7=SM17,SM8=SM18,SM9=SM19,SM10=SM20;P=bcur:,M1=pm1,M2=pm2,M3=pm3,M4=pm4;P=bcur:</string>
              </property>
              <property name="stackingMode" stdset="0">
               <enum>caRowColMenu::Menu</enum>

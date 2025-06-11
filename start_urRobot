@@ -57,12 +57,15 @@ URROBOT_PATH=$(find_module "URROBOT")
 # Find the IOC prefix
 PREFIX=$(find_prefix)
 
+
+export UI_MACROS="P=${PREFIX},M1=SM1,M2=SM2,M3=SM3,M4=SM4,M5=SM5,M6=SM6,M7=SM7,M8=SM8,M9=SM9,M10=SM10,M11=SM11,M12=SM12"
 if [[ $DM == "caqtdm" ]]; then
     export UI_DIR=${URROBOT_PATH}/urRobotApp/op/ui
     export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${UI_DIR}
     export CAQTDM_DISPLAY_PATH=$CAQTDM_DISPLAY_PATH:${UI_DIR}/autoconvert
     source ${EPICS_APP}/setup_epics_common caqtdm
-    ${CAQTDM} -style plastique -noMsg -macro "P=${PREFIX}" "urRobot.ui" &
+    # ${CAQTDM} -style plastique -noMsg -macro "P=${PREFIX}" "urRobot.ui" &
+    ${CAQTDM} -style plastique -noMsg -macro "${UI_MACROS}" "urRobot.ui" &
 elif [[ $DM == "medm" ]]; then
     export ADL_DIR=${URROBOT_PATH}/urRobotApp/op/adl
     if [ -z "$EPICS_DISPLAY_PATH" ]; then

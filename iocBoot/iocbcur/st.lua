@@ -21,15 +21,11 @@ scanOnceSetQueueSize(2000)
 
 -- Load robot support with waypoint and path support
 iocshLoad("urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
-dbLoadTemplate("waypoints.substitutions", "P=$(PREFIX)")
-dbLoadTemplate("paths.substitutions", "P=$(PREFIX)")
+dbLoadTemplate("substitutions/waypoints.substitutions", "P=$(PREFIX)")
+dbLoadTemplate("substitutions/paths.substitutions", "P=$(PREFIX)")
 
--- doAfterIocInit('dbpf("$(PREFIX)Control:TCPOffset_X.VAL", 2.56)')
--- doAfterIocInit('dbpf("$(PREFIX)Control:TCPOffset_Y.VAL", -1.15)')
--- doAfterIocInit('dbpf("$(PREFIX)Control:TCPOffset_Z.VAL", 150.6)')
--- doAfterIocInit('dbpf("$(PREFIX)Control:TCPOffset_Roll.VAL", -0.0203)')
--- doAfterIocInit('dbpf("$(PREFIX)Control:TCPOffset_Pitch.VAL", -3.0925)')
--- doAfterIocInit('dbpf("$(PREFIX)Control:TCPOffset_Yaw.VAL", 0.0024)')
+-- Load softMotors for controlling the robot
+dbLoadTemplate("substitutions/softMotor.substitutions", "P=$(PREFIX)")
 
 -- General purpose python scripts through PyDevice
 dbLoadRecords("user_python_scripts10.db", "P=$(PREFIX)")

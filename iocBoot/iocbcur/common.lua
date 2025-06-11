@@ -20,6 +20,12 @@ iocshLoad("$(CAPUTRECORDER)/iocsh/caputRecorder.iocsh", "PREFIX=$(PREFIX)")
 dbLoadRecords("$(LUA)/luaApp/Db/luascripts10.db", "P=$(PREFIX), R=set1:")
 dbLoadRecords("$(LUA)/luaApp/Db/luascripts10.db", "P=$(PREFIX), R=set2:")
 
+-- userCalcs
+iocshLoad("$(CALC)/iocsh/userCalc.iocsh", "PREFIX=$(PREFIX), ARRAY_SIZE=8000")
+
+-- string sequence (sseq) records
+iocshLoad("$(CALC)/iocsh/sseq.iocsh", "PREFIX=$(PREFIX), INSTANCE=ES:")
+
 -- busy record
 dbLoadRecords("$(BUSY)/busyApp/Db/busyRecord.db", "P=$(PREFIX),R=mybusy1")
 dbLoadRecords("$(BUSY)/busyApp/Db/busyRecord.db", "P=$(PREFIX),R=mybusy2")
