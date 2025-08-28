@@ -85,4 +85,4 @@ elif [[ $DM == "phoebus" ]]; then
     ${PHOEBUS} -layout $EPICS_APP/phoebus.layout -resource "file:${BOB_FILE}?${BOB_FILE_MACROS}&target=window"
 else
     echo "Display manager must be one of the following: caqtdm, medm, phoebus "
-fi 
+fi

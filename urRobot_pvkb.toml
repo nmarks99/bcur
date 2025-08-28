@@ -1,7 +1,6 @@
 prefix = "bcur:"
 
 put = [
-    {pv="Control:ResetPoseCmd.PROC", value=1},
     {pv="Control:AutoMoveL", value=1}
 ]
 
@@ -17,6 +16,5 @@ key_o = {pv="RobotiqGripper:Open.PROC", value=1}
 key_p = {pv="RobotiqGripper:Close.PROC", value=1}
 
 key_h = {pv="WaypointJ:1:moveJ.PROC", value=1}
-key_r = {pv="Control:ResetPoseCmd.PROC", value=1}
 
 key_x = {pv="Control:Stop.PROC", value=1}

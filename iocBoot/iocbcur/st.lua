@@ -25,7 +25,7 @@ dbLoadTemplate("substitutions/waypoints.substitutions", "P=$(PREFIX)")
 dbLoadTemplate("substitutions/paths.substitutions", "P=$(PREFIX)")
 
 -- Load softMotors for controlling the robot
-dbLoadTemplate("substitutions/softMotor.substitutions", "P=$(PREFIX)")
+dbLoadTemplate("$(URROBOT)/db/ur_soft_motors.substitutions", "P=$(PREFIX)")
 
 -- General purpose python scripts through PyDevice
 dbLoadRecords("user_python_scripts10.db", "P=$(PREFIX)")
