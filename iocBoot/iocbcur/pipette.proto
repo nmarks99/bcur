@@ -1,0 +1,115 @@
+##################################################
+# General Settings
+##################################################
+#
+#For reference, pump volume resolutions per half step are as follows:
+#200 uL Z-pump: .1905 uL
+#1000 uL Z-pump: .7635 uL
+#2000 uL Z-pump: 1.904 uL
+#5000 uL Z-pump: 3.808 uL
+
+Terminator =ETX CR LF;
+ReplyTimeout = 500;
+locktimeout = 600;
+readtimeout  = 500;
+#extrainput   = Ignore;
+InTerminator = ETX;
+
+#OutTerminator might not be needed
+#Check page 6 of the manual
+#We are using OEM commands
+###################################################
+# Get functions
+###################################################
+# Read Firmware Version
+getIDN {
+   out "/1?23";
+   in "/0`%40c";
+}
+
+#Report Calculated Plunger Position in Inrements
+getCPPI {
+   out "/1?";
+   in "/0`%i";
+}
+
+#Report Start Velocity
+getRSV {
+   out "/1?1";
+   in "/0`%i";
+}
+
+#Report Top Velocity
+getRTV {
+   out "/1?2";
+   in "/0`%i";
+}
+
+#Report CutOff Velocity
+getRCV {
+   out "/1?3";
+   in "/0`%i";
+}
+
+#Report encoder position in increments
+getEPI {
+   out "/1?4";
+   in "/0`%i";
+}
+
+
+#Report Actual Plunger Position Encoder
+getAPPS {
+   out "/1?5";
+   in "/0`%i";
+}
+
+#Report Dead Volume
+getDEV {
+   out "/1?24";
+   in "/0`%i";
+}
+
+#Report Motor Hold Current
+getMHC {
+   out "/1?25";
+   in "/0`%i";
+}
+
+#Report Motor Run Current
+getMRC {
+   out "/1?26";
+   in "/0`%i";
+}
+
+#Report System Status
+getSTS {
+   out "/1Q";
+   in "/0`%i";
+}
+
+
+#####################################################
+#  Write Functions
+#####################################################
+#Initialize to Home
+initHome{
+   out "/1z1600A0A10z0R";
+}
+
+MovePlunger{
+   out "/1A%iR";
+}
+
+
+
+setSpeed{
+   out "/1V%iR";
+}
+
+
+setDVol{
+   out "/1k%iR";
+}
+
+

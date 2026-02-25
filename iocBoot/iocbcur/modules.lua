@@ -49,6 +49,5 @@ local MODULES = {
 	["ADSUPPORT"] = "/APSshare/epics/synApps_6_3/support/areaDetector-R3-13/ADSupport",
 	["ULDAQ"] = "/APSshare/epics/synApps_6_3/support/measComp-R4-2/libuldaq-1.2.1",
 	["URROBOT"] = "/net/s100dserv/xorApps/epics/synApps_6_3/support/urRobot",
-	["PYDEVICE"] = "/home/beams/NMARKS/devel/PyDevice",
 }
 return MODULES

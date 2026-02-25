@@ -11,70 +11,70 @@ BEGIN
 {
 	# Top level of the IOC folder
 	$ENV{TOP} = "$FindBin::RealBin/../../..";
-	
-	
+
+
 	# IOC prefix name, used to find the correct iocBoot directory and executable
 	$ENV{IOC_NAME}="bcur";
-	
-	
-	
+
+
+
 	#########################
 	# IOC Executable Config #
 	#########################
-	
+
 	# Name of the IOC executable file
 	$ENV{IOC_BINARY}="$ENV{IOC_NAME}";
 	#! $ENV{IOC_BINARY}="bcur";
-	
-	
+
+
 	# Top-level bin directory for the IOC
 	$ENV{IOC_BIN_DIR}="$ENV{TOP}/bin";
 	#! $ENV{IOC_BIN_DIR}="/home/username/epics/synApps/support/bcur/bin";
 	#! $ENV{IOC_BIN_DIR}="/home/username/epics/synApps/support/module/iocs/exampleIOC/bin";
-	
+
 	# Architecture the IOC is built under
 	$ENV{EPICS_HOST_ARCH} //= "linux-x86_64";
 	#! $ENV{EPICS_HOST_ARCH}="linux-x86_64-debug";
-	
-	
+
+
 	# Full path to the IOC executable
 	$ENV{IOC_BIN_PATH}="$ENV{IOC_BIN_DIR}/$ENV{EPICS_HOST_ARCH}/$ENV{IOC_BINARY}";
-	
-	
-	
+
+
+
 	###########################
 	# IOC Startup File Config #
 	###########################
-	
+
 	# Startup Script for the IOC to run
-	$ENV{IOC_STARTUP_FILE}="st.lua";
-	#! $ENV{IOC_STARTUP_FILE}="st.cmd.Linux";
+	$ENV{IOC_STARTUP_FILE}="st.cmd.Linux";
+	#! $ENV{IOC_STARTUP_FILE}="st.lua";
 	#! $ENV{IOC_STARTUP_FILE}="st.cmd.Cygwin";
 	#! $ENV{IOC_STARTUP_FILE}="st.cmd.Win32";
 	#! $ENV{IOC_STARTUP_FILE}="st.cmd.Win64";
-	
-	
+
+
 	# Directory that contains the startup script
 	$ENV{IOC_STARTUP_DIR}="$ENV{TOP}/iocBoot/ioc$ENV{IOC_NAME}";
 	#! $ENV{IOC_STARTUP_DIR}="/home/username/epics/ioc/synApps/bcur/iocBoot/iocbcur";
-	
-	
+
+
 	# Full path to the startup file
 	$ENV{IOC_STARTUP_FILE_PATH}="$ENV{IOC_STARTUP_DIR}/$ENV{IOC_STARTUP_FILE}";
-	
-	
-	
+
+
+
 	##########################
 	# Config For This Script #
 	##########################
-	
+
 	# Directory that contains all the command modules to be loaded
 	$ENV{IOC_COMMAND_DIR}="$ENV{IOC_STARTUP_DIR}/softioc/commands";
 	#! $ENV{IOC_COMMAND_DIR}="/home/username/epics/ioc/synApps/bcur/iocBoot/iocbcur/softioc/commands";
-	
-	
+
+
 	$ENV{IOC_CMD}="$ENV{IOC_BIN_PATH} $ENV{IOC_STARTUP_FILE_PATH}";
-	
+
 	# Required shell commands
 	$ENV{SCREEN}="screen";
 	$ENV{TELNET}="telnet";

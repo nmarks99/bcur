@@ -16,6 +16,10 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 -- Increasing setOnce queue fixes this.
 scanOnceSetQueueSize(2000)
 
+-- -- pipette support
+-- drvAsynIPPortConfigure("PIPETTE_PORT", "164.54.104.148:54321", 0, 0, 0)
+-- dbLoadRecords("pipette.db", "P=$(PREFIX),PORT=PIPETTE_PORT")
+
 -- Load robot support with waypoint and path support
 iocshLoad("urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
 dbLoadTemplate("substitutions/waypoints.substitutions", "P=$(PREFIX)")

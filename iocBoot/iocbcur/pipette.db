@@ -1,0 +1,199 @@
+#######################################################
+#M Pipetting Controller
+#OEM protocol
+#Mariano Ruiz
+#######################################################
+
+#######################################################
+#Reads
+#######################################################
+
+#get firmware
+record(stringin, "$(P)Pipette:GetIDN") {
+  field(DESC, "Read the IDN/firmware")
+  field(DTYP, "stream")
+  field(INP, "@pipette.proto getIDN $(PORT)")
+  field(SCAN, "1 second")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+
+#Report Calculated Plunger Position in Inrements
+record(longin, "$(P)Pipette:CPPI") {
+  field(DESC, "Read Calc Plunger Position Increments")
+  field(DTYP, "stream")
+  field(INP, "@pipette.proto getCPPI $(PORT)")
+  field(SCAN, "1 second")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+#Report Start Velocity
+record(longin, "$(P)Pipette:RSV") {
+  field(DESC, "Read Start Velocity")
+  field(DTYP, "stream")
+  field(INP, "@pipette.proto getRSV $(PORT)")
+  field(SCAN, "1 second")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+#Report Top Velocity
+record(longin, "$(P)Pipette:RTV") {
+  field(DESC, "Read Top Velocity")
+  field(DTYP, "stream")
+  field(INP, "@pipette.proto getRTV $(PORT)")
+  field(SCAN, "1 second")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+#Report CutOff Velocity
+record(longin, "$(P)Pipette:RCV") {
+  field(DESC, "Read CutOff Velocity")
+  field(DTYP, "stream")
+  field(INP, "@pipette.proto getRCV $(PORT)")
+  field(SCAN, "1 second")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+#Report encoder position in increments
+record(longin, "$(P)Pipette:EPI") {
+  field(DESC, "Read Encoder Position Increments")
+  field(DTYP, "stream")
+  field(INP, "@pipette.proto getEPI $(PORT)")
+  field(SCAN, "1 second")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+#Report Actual Plunger Position Encoder
+record(longin, "$(P)Pipette:APPS") {
+  field(DESC, "Read Plunger Pos Encoder")
+  field(DTYP, "stream")
+  field(INP, "@pipette.proto getAPPS $(PORT)")
+  field(SCAN, "1 second")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+#Report Dead Volume
+record(longin, "$(P)Pipette:DEV") {
+  field(DESC, "Report Dead Volume")
+  field(DTYP, "stream")
+  field(INP, "@pipette.proto getDEV $(PORT)")
+  field(SCAN, "1 second")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+#Report Motor Hold Current
+record(longin, "$(P)Pipette:MHC") {
+  field(DESC, "Report Motor Hold Current")
+  field(DTYP, "stream")
+  field(INP, "@pipette.proto getMHC $(PORT)")
+  field(SCAN, "1 second")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+#Report Motor Run Current
+record(longin, "$(P)Pipette:MRC") {
+  field(DESC, "Report Motor Run Current")
+  field(DTYP, "stream")
+  field(INP, "@pipette.proto getMRC $(PORT)")
+  field(SCAN, "1 second")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+#Report System Status
+record(longin, "$(P)Pipette:STS") {
+  field(DESC, "Read The Status")
+  field(DTYP, "stream")
+  field(INP, "@pipette.proto getSTS $(PORT)")
+  field(SCAN, "1 second")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+#####################################################
+#Writes
+#####################################################
+record(bo, "$(P)Pipette:Home") {
+  field(DESC, "Home")
+  field(DTYP, "stream")
+  field(OUT, "@pipette.proto initHome $(PORT)")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+
+#####################Set Volume
+#For reference, pump volume resolutions per half step are as follows:
+#200 uL Z-pump: .1905 uL
+#1000 uL Z-pump: .7635 uL
+#2000 uL Z-pump: 1.904 uL
+#5000 uL Z-pump: 3.808 uL
+record(ao, "$(P)Pipette:Resolution") {
+  field(DESC, "Resolution per half steps")
+  field(PINI, "YES")
+  field(VAL, "0.7635")
+  field(PREC, "4")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+  # info(autosaveFields, "VAL")
+}
+
+record(longout, "$(P)Pipette:SetVolume") {
+  field(DESC, "Set Volume")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+  field(EGU, "uL")
+  field(DRVH, "1000")
+  field(DRVL, "0")
+  field(HOPR, "1000")
+  field(LOPR, "0")
+  # info(autosaveFields, "VAL DRVH HOPR")
+  field (FLNK, "$(P)Pipette:SetVolumeCALC")
+}
+
+
+record(calcout, "$(P)Pipette:SetVolumeCALC") {
+  field(DESC, "set Volume")
+  field(INPA, "$(P)Pipette:Resolution")
+  field(INPB, "$(P)Pipette:SetVolume")
+  field(CALC, "(B/A)*1")
+  field(EGU, "uL")
+  field(PREC, "4")
+  field(DOPT, "Use CALC")
+  field(OOPT, "Every Time")
+  field(OUT, "$(P)Pipette:WPlungerPos PP")
+  # info(archive, "Monitor, 00:01:00")
+}
+
+record(longout, "$(P)Pipette:WPlungerPos") {
+  field(DESC, "Move plunger")
+  field(DTYP, "stream")
+  field(EGU, "Steps")
+  field(OUT, "@pipette.proto MovePlunger $(PORT)")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+
+
+
+record(longout, "$(P)Pipette:SetSpeed") {
+  field(DESC, "Home")
+  field(DTYP, "stream")
+  field(OUT, "@pipette.proto setSpeed $(PORT)")
+  field(DRVH, "6000")
+  field(DRVL, "5")
+  field(HOPR, "6000")
+  field(LOPR, "5")
+  # info(autosaveFields, "VAL")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+record(longout, "$(P)Pipette:SetDVol") {
+  field(DESC, "Set Deadvolume")
+  field(DTYP, "stream")
+  field(OUT, "@pipette.proto setDVol $(PORT)")
+  field(DRVH, "80")
+  field(DRVL, "0")
+  field(HOPR, "80")
+  field(LOPR, "0")
+  # info(autosaveFields, "VAL")
+  # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
+}
+
+
+
