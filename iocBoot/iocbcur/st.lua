@@ -2,9 +2,6 @@
 
 < envPaths
 
--- Search path for PyDevice python scripts
-epicsEnvSet("PYTHONPATH","$(TOP)/iocBoot/iocbcur/scripts/")
-
 errlogInit(20000)
 
 -- Tell EPICS all about the record types, device-support modules, drivers,
@@ -26,14 +23,6 @@ dbLoadTemplate("substitutions/paths.substitutions", "P=$(PREFIX)")
 
 -- Load softMotors for controlling the robot
 dbLoadTemplate("$(URROBOT)/db/ur_soft_motors.substitutions", "P=$(PREFIX)")
-
--- General purpose python scripts through PyDevice
-dbLoadRecords("user_python_scripts10.db", "P=$(PREFIX)")
-doAfterIocInit('dbpf("$(PREFIX)PythonScript1.PROC", 1)')
-doAfterIocInit('dbpf("$(PREFIX)PythonScript2.PROC", 1)')
-doAfterIocInit('dbpf("$(PREFIX)PythonScript3.PROC", 1)')
-doAfterIocInit('dbpf("$(PREFIX)PythonScript4.PROC", 1)')
-doAfterIocInit('dbpf("$(PREFIX)PythonScript5.PROC", 1)')
 
 -- devIocStats
 dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")

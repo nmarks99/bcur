@@ -1,5 +1,5 @@
 -- Shell prompt
-epicsEnvSet("IOCSH_PS1", "$(IOC)> ")
+epicsEnvSet("LUASH_PS1", "[luash]$(IOC)> ")
 
 -- prefix used for all PVs in this IOC
 epicsEnvSet("PREFIX", "bcur:")
