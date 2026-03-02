@@ -104,7 +104,7 @@ record(longin, "$(P)Pipette:STS") {
   field(DESC, "Read The Status")
   field(DTYP, "stream")
   field(INP, "@pipette.proto getSTS $(PORT)")
-  field(SCAN, "1 second")
+  # field(SCAN, "1 second")
   # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
 }
 
@@ -143,11 +143,19 @@ record(longout, "$(P)Pipette:SetVolume") {
   field(HOPR, "1000")
   field(LOPR, "0")
   # info(autosaveFields, "VAL DRVH HOPR")
-  field (FLNK, "$(P)Pipette:SetVolumeCALC")
+  # field (FLNK, "$(P)Pipette:set_volume_calc")
 }
 
+record(longout, "$(P)Pipette:Dispense") {
+    field(VAL, 0)
+    field(OUT, "$(P)Pipette:SetPlunger PP")
+}
 
-record(calcout, "$(P)Pipette:SetVolumeCALC") {
+record(bo, "$(P)Pipette:Aspirate") {
+    field(FLNK, "$(P)Pipette:set_volume_calc.PROC")
+}
+
+record(calcout, "$(P)Pipette:set_volume_calc") {
   field(DESC, "set Volume")
   field(INPA, "$(P)Pipette:Resolution")
   field(INPB, "$(P)Pipette:SetVolume")
@@ -156,11 +164,11 @@ record(calcout, "$(P)Pipette:SetVolumeCALC") {
   field(PREC, "4")
   field(DOPT, "Use CALC")
   field(OOPT, "Every Time")
-  field(OUT, "$(P)Pipette:WPlungerPos PP")
+  field(OUT, "$(P)Pipette:SetPlunger PP")
   # info(archive, "Monitor, 00:01:00")
 }
 
-record(longout, "$(P)Pipette:WPlungerPos") {
+record(longout, "$(P)Pipette:SetPlunger") {
   field(DESC, "Move plunger")
   field(DTYP, "stream")
   field(EGU, "Steps")
@@ -183,7 +191,7 @@ record(longout, "$(P)Pipette:SetSpeed") {
   # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
 }
 
-record(longout, "$(P)Pipette:SetDVol") {
+record(longout, "$(P)Pipette:SetDeadVolume") {
   field(DESC, "Set Deadvolume")
   field(DTYP, "stream")
   field(OUT, "@pipette.proto setDVol $(PORT)")

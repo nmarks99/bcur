@@ -1,0 +1,4 @@
+$(P)Pipette:SetPlunger.VAL
+$(P)Pipette:SetSpeed.VAL
+$(P)Pipette:SetDeadVolume.VAL
+$(P)Pipette:SetVolume.VAL

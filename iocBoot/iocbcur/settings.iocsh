@@ -6,14 +6,14 @@ epicsEnvSet("PREFIX", "bcur:")
 
 # For devIocStats
 epicsEnvSet("ENGINEER", "Nick")
-epicsEnvSet("LOCATION", "location")
+epicsEnvSet("LOCATION", "BCDA Lab")
 epicsEnvSet("GROUP", "BCDA")
 
 # search path for database files
 # epicsEnvSet("EPICS_DB_INCLUDE_PATH", "$(DEVIOCSTATS)/db")
 
 # search path for streamDevice protocol files
-epicsEnvSet("STREAM_PROTOCOL_PATH", ".")
+epicsEnvSet("STREAM_PROTOCOL_PATH", ".:$(TOP)/bcurApp/Db")
 
 # search path for lua scripts
 epicsEnvSet("LUA_SCRIPT_PATH", "lua_scripts")

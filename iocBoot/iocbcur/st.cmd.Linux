@@ -14,9 +14,10 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 # Increasing setOnce queue fixes this.
 scanOnceSetQueueSize(2000)
 
-# # pipette support
-# drvAsynIPPortConfigure("PIPETTE_PORT", "164.54.104.148:54321", 0, 0, 0)
-# dbLoadRecords("pipette.db", "P=$(PREFIX),PORT=PIPETTE_PORT")
+# pipette support
+drvAsynIPPortConfigure("PIPETTE_PORT", "164.54.104.148:54321", 0, 0, 0)
+asynSetTraceMask("PIPETTE_PORT", 0, 0x0)
+dbLoadRecords("$(TOP)/db/pipette.db", "P=$(PREFIX),PORT=PIPETTE_PORT")
 
 # Load robot support with waypoint and path support
 iocshLoad("urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
@@ -35,10 +36,10 @@ dbLoadRecords("$(TOP)/bcurApp/Db/iocAdminSoft_aliases.db","P=$(PREFIX)")
 iocInit()
 #######################################
 
-iocshCmd("dbl > dbl-all.txt")
+dbl > dbl-all.txt
 
 # Diagnostic: CA links in all records
 dbcar(0,1)
 
 # print the time our boot was finished
-date()
+date
