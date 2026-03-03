@@ -21,11 +21,10 @@ dbLoadRecords("$(TOP)/db/pipette.db", "P=$(PREFIX),PORT=PIPETTE_PORT")
 
 # Load robot support with waypoint and path support
 iocshLoad("urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
-dbLoadTemplate("substitutions/waypoints.substitutions", "P=$(PREFIX)")
-dbLoadTemplate("substitutions/paths.substitutions", "P=$(PREFIX)")
+iocshLoad("$(URROBOT)/iocsh/paths.iocsh")
 
 # Load softMotors for controlling the robot
-dbLoadTemplate("$(URROBOT)/db/ur_soft_motors.substitutions", "P=$(PREFIX)")
+dbLoadTemplate("$(URROBOT)/db/ur_soft_motor.substitutions", "P=$(PREFIX)")
 
 # devIocStats
 dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")
@@ -33,7 +32,7 @@ dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")
 dbLoadRecords("$(TOP)/bcurApp/Db/iocAdminSoft_aliases.db","P=$(PREFIX)")
 
 #######################################
-iocInit()
+iocInit
 #######################################
 
 dbl > dbl-all.txt
