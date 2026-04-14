@@ -128,7 +128,7 @@ record(bo, "$(P)Pipette:Home") {
 record(ao, "$(P)Pipette:Resolution") {
   field(DESC, "Resolution per half steps")
   field(PINI, "YES")
-  field(VAL, "0.7635")
+  field(VAL, "0.1905")
   field(PREC, "4")
   # info(archive, "Monitor, 00:01:00, VAL HIHI LOLO")
   # info(autosaveFields, "VAL")

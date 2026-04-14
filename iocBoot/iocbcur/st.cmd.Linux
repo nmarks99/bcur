@@ -14,17 +14,17 @@ iocbcurLinux_registerRecordDeviceDriver(pdbbase)
 # Increasing setOnce queue fixes this.
 scanOnceSetQueueSize(2000)
 
-# pipette support
-drvAsynIPPortConfigure("PIPETTE_PORT", "164.54.104.148:54321", 0, 0, 0)
-asynSetTraceMask("PIPETTE_PORT", 0, 0x0)
-dbLoadRecords("$(TOP)/db/pipette.db", "P=$(PREFIX),PORT=PIPETTE_PORT")
+# # pipette support
+# drvAsynIPPortConfigure("PIPETTE_PORT", "164.54.104.148:54321", 0, 0, 0)
+# asynSetTraceMask("PIPETTE_PORT", 0, 0x0)
+# dbLoadRecords("$(TOP)/db/pipette.db", "P=$(PREFIX),PORT=PIPETTE_PORT")
+
+# Set log level for urRobot to "debug" severity
+epicsEnvSet("SPDLOG_LEVEL","debug,mylogger=trace")
 
 # Load robot support with waypoint and path support
 iocshLoad("urRobot.iocsh", "PREFIX=$(PREFIX), IP=164.54.104.148")
 iocshLoad("$(URROBOT)/iocsh/paths.iocsh")
-
-# Load softMotors for controlling the robot
-dbLoadTemplate("$(URROBOT)/db/ur_soft_motor.substitutions", "P=$(PREFIX)")
 
 # devIocStats
 dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")

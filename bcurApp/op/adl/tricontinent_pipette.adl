@@ -1,14 +1,14 @@
 
 file {
-	name="pipette.adl"
+	name="/net/s100dserv/xorApps/epics/synApps_6_3/ioc/bcur/bcurApp/op/adl/pipette.adl"
 	version=030111
 }
 display {
 	object {
-		x=748
-		y=429
-		width=687
-		height=338
+		x=728
+		y=413
+		width=360
+		height=225
 	}
 	clr=14
 	bclr=4
@@ -86,325 +86,6 @@ display {
 		289315,
 		1a7309,
 	}
-}
-"text update" {
-	object {
-		x=570
-		y=65
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)Pipette:GetIDN.VAL"
-		clr=54
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=570
-		y=90
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)Pipette:CPPI.VAL"
-		clr=54
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=570
-		y=115
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)Pipette:RSV.VAL"
-		clr=54
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=570
-		y=140
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)Pipette:RTV.VAL"
-		clr=54
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=570
-		y=165
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)Pipette:RCV.VAL"
-		clr=54
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=570
-		y=190
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)Pipette:EPI.VAL"
-		clr=54
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=570
-		y=215
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)Pipette:APPS.VAL"
-		clr=54
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=570
-		y=240
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)Pipette:DEV.VAL"
-		clr=54
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=570
-		y=265
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)Pipette:MHC.VAL"
-		clr=54
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=570
-		y=290
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)Pipette:MRC.VAL"
-		clr=54
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=570
-		y=40
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)Pipette:STS.VAL"
-		clr=54
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-text {
-	object {
-		x=440
-		y=40
-		width=120
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Status:"
-	align="horiz. right"
-}
-text {
-	object {
-		x=440
-		y=65
-		width=120
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="IDN:"
-	align="horiz. right"
-}
-text {
-	object {
-		x=460
-		y=90
-		width=100
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="CPPI:"
-	align="horiz. right"
-}
-text {
-	object {
-		x=360
-		y=115
-		width=201
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Start Velocity:"
-	align="horiz. right"
-}
-text {
-	object {
-		x=360
-		y=140
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Top Velocity:"
-	align="horiz. right"
-}
-text {
-	object {
-		x=360
-		y=165
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Cutoff Velocity:"
-	align="horiz. right"
-}
-text {
-	object {
-		x=360
-		y=190
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Encoder Position:"
-	align="horiz. right"
-}
-text {
-	object {
-		x=360
-		y=240
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Dead Volume:"
-	align="horiz. right"
-}
-text {
-	object {
-		x=360
-		y=265
-		width=200
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Hold Current:"
-	align="horiz. right"
-}
-text {
-	object {
-		x=390
-		y=290
-		width=170
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Run Current:"
-	align="horiz. right"
-}
-text {
-	object {
-		x=440
-		y=215
-		width=120
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="APPS:"
-	align="horiz. right"
 }
 "message button" {
 	object {
@@ -574,8 +255,8 @@ text {
 }
 text {
 	object {
-		x=10
-		y=305
+		x=15
+		y=195
 		width=120
 		height=20
 	}
@@ -588,7 +269,7 @@ text {
 "text entry" {
 	object {
 		x=140
-		y=305
+		y=197
 		width=100
 		height=20
 	}
@@ -604,7 +285,7 @@ text {
 text {
 	object {
 		x=245
-		y=310
+		y=200
 		width=120
 		height=15
 	}
@@ -612,7 +293,6 @@ text {
 		clr=14
 	}
 	textix="uL/half step"
-	align="horiz. right"
 }
 "text entry" {
 	object {
@@ -661,8 +341,8 @@ text {
 }
 "message button" {
 	object {
-		x=140
-		y=225
+		x=215
+		y=35
 		width=100
 		height=20
 	}
@@ -676,8 +356,8 @@ text {
 }
 "message button" {
 	object {
-		x=140
-		y=200
+		x=110
+		y=35
 		width=100
 		height=20
 	}
@@ -693,7 +373,7 @@ rectangle {
 	object {
 		x=0
 		y=0
-		width=800
+		width=500
 		height=30
 	}
 	"basic attribute" {

@@ -12,7 +12,7 @@ Terminator =ETX CR LF;
 ReplyTimeout = 500;
 locktimeout = 600;
 readtimeout  = 500;
-#extrainput   = Ignore;
+ExtraInput = Error;
 InTerminator = ETX;
 
 #OutTerminator might not be needed
